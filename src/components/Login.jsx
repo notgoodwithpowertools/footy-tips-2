@@ -10,29 +10,33 @@ export class Login extends React.Component {
     super(props);
     this.onLoginGitHub = this.onLoginGitHub.bind(this);
     this.onLoginEmail = this.onLoginEmail.bind(this);
-    this.register = this.register.bind(this);
+    // this.register = this.register.bind(this);
   }
 
   onLoginGitHub () {
-    var {dispatch} = this.props;
     console.log("Begin GitHub login...");
+    var {dispatch} = this.props;
     dispatch(authActions.startGitHubLogin());
   }
 
   onLoginEmail (e) {
-    var emailTxt = this.refs.userid.value;
-    var passwordTxt = this.refs.password.value;
-    console.log("emailTxt:", emailTxt);
-    var {dispatch} = this.props;
     console.log("Begin Email login...");
-    dispatch(authActions.startEmailLogin(emailTxt, passwordTxt));
+    e.preventDefault();
+    // var emailTxt = this.refs.userid.value;
+    // var passwordTxt = this.refs.password.value;
+    // console.log("emailTxt:", emailTxt);
+    var {dispatch} = this.props;
+    dispatch(authActions.startEmailLogin(this.refs.userid.value, this.refs.password.value));
   }
 
-  register () {
-    var {dispatch} = this.props;
-    console.log("Begin registration...");
-    dispatch(authActions.registerUser());
-  }
+  // register (e) {
+  //   console.log("Begin registration...");
+  //   e.preventDefault();
+  //   var emailTxt = this.refs.userid.value;
+  //   var passwordTxt = this.refs.password.value;
+  //   var {dispatch} = this.props;
+  //   dispatch(authActions.registerUser(emailTxt, passwordTxt));
+  // }
 
   //Same as ...
   //render: function () {}
@@ -44,14 +48,13 @@ export class Login extends React.Component {
           <div>
             <input type="email" ref="userid" placeholder="Enter email id..." />
             <input type="password" ref="password" placeholder="Enter password..." />
-
           </div>
         <p>Login with Github account...</p>
         <button className="button" onClick={this.onLoginGitHub}>Login with Github</button>
         <p>Login with email account...</p>
         <button className="button" onClick={this.onLoginEmail}>Login with Email</button>
-        <p>Register email account...</p>
-        <button className="button" onClick={this.register}>Register Email</button>
+        {/* }<p>Register email account...</p> */}
+        {/* }<button className="button" onClick={this.register}>Register Email</button> */}
 
       </div>
     )

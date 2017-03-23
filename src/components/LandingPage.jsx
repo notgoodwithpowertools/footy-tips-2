@@ -19,7 +19,7 @@ var LandingPage = (props) => {
       </div>
       <div className="second">
         <button className="button1"><Link to='/login'>Log in</Link></button>
-        <button className="button2">Register</button>
+        <button className="button2"><Link to='/register'>Register</Link></button>
 
       </div>
     </div>

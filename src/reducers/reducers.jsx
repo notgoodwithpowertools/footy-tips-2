@@ -10,6 +10,29 @@ export var authReducer = (state = '', action) => {
     case 'LOGOUT':
       console.log("Logging out user...");
       return {};
+    /*
+    case 'ADD_USER':
+      return {
+        user: action.user
+      }
+    */
+    default:
+      return state;
+  }
+
+};
+
+export var userReducer = (state = '', action) => {
+
+  switch (action.type) {
+    case 'ADD_USER':
+      return {
+        email: action.user.email,
+        firstname: action.user.firstname,
+        uid: action.user.uid
+      };
+    case 'LOGOUT':
+      return {};
     default:
       return state;
   }

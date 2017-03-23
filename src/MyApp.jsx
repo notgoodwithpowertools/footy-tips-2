@@ -15,7 +15,9 @@ import About from './components/About.jsx';
 //import Topic from './components/Topic.jsx';
 import Topics from './components/Topics.jsx';
 import Login from './components/Login.jsx';
+import Register from './components/Register.jsx';
 import LandingPage from './components/LandingPage.jsx';
+import User from './components/User.jsx';
 // import Spinner from './components/Spinner.jsx';
 
 import * as authActions from './actions/auth-actions.js';
@@ -31,25 +33,23 @@ export class MyApp extends React.Component {
   }
 
 
-
   render () {
 
-
-
-
     // const user = true;
-    var { uid }  = this.props;
-    console.log("uid:", uid);
+    var { user }  = this.props;
+    console.log("user:", user);
 
     var menu = () => {
 
-      if ( uid ) {
+      if ( user ) {
         return (
           <ul>
             <li><Link to="/home">Home</Link></li>
+            <li><Link to="/user">User</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/topics">Topics</Link></li>
-            <li><Link to="/login">Logon</Link></li>
+            <li><Link to="/login">Login</Link></li>
+            <li><Link to="/register">Register</Link></li>
             <li><Link to="/start">Start</Link></li>
             <li><Link to="#" onClick={this.onLogout.bind(this)}>Logout</Link></li>
           </ul>
@@ -60,7 +60,7 @@ export class MyApp extends React.Component {
     // function protect (aComponent) {
     const protect = (aComponent) => {
 
-      if (!uid) {
+      if (!user) {
          return LandingPage;
         }
        else {
@@ -81,7 +81,7 @@ export class MyApp extends React.Component {
 
         {/* }<Route exact path="/" component={Home}/> */}
         <Route exact path="/" render={() => (
-          uid ?
+          user ?
           <Home /> :
           <Redirect to="/start" />
         )}/>
@@ -90,17 +90,23 @@ export class MyApp extends React.Component {
             <Home /> :
             <Redirect to="/start" />
           )}/> */}
-        <Route path="/login" render={() => (
-          uid ?
-          <Redirect to="/home" /> :
-          <Login />
-        )}/>
+      <Route path="/login" render={() => (
+        user ?
+        <Redirect to="/home" /> :
+        <Login />
+      )}/>
+    <Route path="/register" render={() => (
+        user ?
+        <Redirect to="/home" /> :
+        <Register />
+      )}/>
       <Route path="/start" render={() => (
-          uid ?
+          user ?
           <Redirect to="/home" /> :
           <LandingPage />
         )}/>
         <Route path="/home" render={protect(Home)} />
+        <Route path="/user" component={protect(User)} />
         {/* <Route path="/topics" render={({Topics}) => (<Redirect to="/start" />)}/> */}
         <Route path="/topics" render={protect(Topics)} />
         {/* <Route path="/login" component={Login} /> */}
@@ -117,7 +123,7 @@ export class MyApp extends React.Component {
 export default Redux.connect(
   (state) => {
     return {
-      uid: state.auth.uid
+      user: state.auth.uid
     };
     //return state;
   }

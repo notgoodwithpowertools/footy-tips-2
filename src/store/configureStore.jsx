@@ -3,11 +3,12 @@ import * as redux from 'redux';
 import thunk from 'redux-thunk';
 
 //var {searchTextReducer, showCompletedReducer, todosReducer} = require('../reducers/reducers.jsx');
-import { authReducer } from '../reducers/reducers.jsx';
+import { authReducer, userReducer } from '../reducers/reducers.jsx';
 
 export var configure = (initialState={}) => {
   var reducers = redux.combineReducers({
-    auth: authReducer
+    auth: authReducer,
+    user: userReducer
   });
 
   //console.log("initialState:", initialState);

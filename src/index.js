@@ -14,7 +14,9 @@ import firebase from './api/firebase/index.js';
 
 firebase.auth().onAuthStateChanged( (user) => {
   if (user) {
+    //store.dispatch(authActions.login(user.uid));
     store.dispatch(authActions.login(user.uid));
+    store.dispatch(authActions.startAddUser(user.uid));
   } else {
     store.dispatch(authActions.logout());
   }

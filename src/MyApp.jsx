@@ -6,7 +6,10 @@ import {
   Route,
   Redirect,
   Link
-} from 'react-router-dom'
+} from 'react-router-dom';
+
+import './App.css';
+import './index.css';
 
 
 

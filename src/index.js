@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import MyApp from './MyApp';
 import './index.css';
 
+
 import { Provider } from 'react-redux';
 
 var store = require('./store/configureStore.jsx').configure();

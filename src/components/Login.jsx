@@ -40,7 +40,15 @@ export class Login extends React.Component {
 
   //Same as ...
   //render: function () {}
+
   render () {
+
+    // const buttonStyle = {
+    //   fontFamily:'Ubuntu'
+    // };
+
+    var { msg } = this.props;
+
     return (
       <div>
 
@@ -55,11 +63,20 @@ export class Login extends React.Component {
         <button className="button" onClick={this.onLoginEmail}>Login with Email</button>
         {/* }<p>Register email account...</p> */}
         {/* }<button className="button" onClick={this.register}>Register Email</button> */}
-
+        <p className="error">{msg}</p>
       </div>
     )
   }
 };
 
 //export default Login;
-export default Redux.connect()(Login);
+export default Redux.connect(
+  (state) => {
+    return {
+      msg: state.msg
+    };
+    //return state;
+  }
+
+
+)(Login);

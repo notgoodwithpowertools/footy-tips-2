@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 
 // import Login from './Login.jsx';
+import '../button.css';
 
 // Refactor to stateless functional Component
 var LandingPage = (props) => {
@@ -15,11 +16,11 @@ var LandingPage = (props) => {
     <div className="landing">
     <div className="title">
       <div className="first">
-        <h1 className="heading">Footy Tipping</h1>
+        <h1 className="heading">Landing Page</h1>
       </div>
       <div className="second">
-        <button className="button1"><Link to='/login'>Log in</Link></button>
-        <button className="button2"><Link to='/register'>Register</Link></button>
+        <button className="button1 myButton"><Link to='/login'>Log in</Link></button>
+        <button className="button2 myButton"><Link to='/register'>Register</Link></button>
 
       </div>
     </div>

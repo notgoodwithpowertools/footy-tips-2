@@ -4,7 +4,6 @@ import * as Redux from 'react-redux';
 // const User = () => {
 export class User extends React.Component {
 
-  //console.log("uid XXX:", uid);
   render () {
 
   var { user }  = this.props;
@@ -13,6 +12,7 @@ export class User extends React.Component {
     <div>
       <h2>Email - {user.email}</h2>
       <h2>User - {user.firstname}</h2>
+      <h2>UID - {user.uid}</h2>
 
     </div>
   )

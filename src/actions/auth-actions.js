@@ -1,11 +1,20 @@
 import firebase, { firebaseRef, githubProvider} from '../api/firebase/index.js';
-
+import { setMsg } from './msg-actions';
 // export var login = (uid) => {
 //   return {
 //     type: 'LOGIN',
 //     uid: uid
 //   };
 // };
+/*
+export var setMsg = (msg) => {
+  console.log("setting message:", msg);
+  return {
+    type: 'SET_MSG',
+    msg: msg
+  };
+};
+*/
 export var login = (uid) => {
   console.log("login action...");
   return {
@@ -91,6 +100,9 @@ export var startEmailLogin = (email = "aqwerty543@gmail.com", password = "wally1
       startAddUser();
     }, (error) => {
       console.log("Unable to auth", error);
+      console.log("Error:", error.message);
+      dispatch(setMsg(error.message));
+
     });
   };
 };

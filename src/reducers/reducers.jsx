@@ -38,3 +38,15 @@ export var userReducer = (state = '', action) => {
   }
 
 };
+
+export var msgReducer = (state = '', action) => {
+
+  switch (action.type) {
+    case 'SET_MSG':
+      return action.msg;
+    case 'LOGOUT':
+      return '';
+    default:
+      return state;
+  }
+}

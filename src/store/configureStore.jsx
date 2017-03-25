@@ -12,12 +12,35 @@ export var configure = (initialState={}) => {
     msg: msgReducer
   });
 
-  //console.log("initialState:", initialState);
+  console.log("Window:", window.navigator.userAgent);
 
-  var store = redux.createStore(reducers, initialState, redux.compose(
-    redux.applyMiddleware(thunk),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  ));
+
+
+  // if (window.navigator.userAgent.includes('Chrome')) {
+  //   //console.log("initialState:", initialState);
+  //   var store = redux.createStore(reducers, initialState, redux.compose(
+  //     redux.applyMiddleware(thunk)
+  //     ,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  //   ));
+  // }
+  // else {
+  //   var store = redux.createStore(reducers, initialState, redux.compose(
+  //     redux.applyMiddleware(thunk)
+  //     //,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  //   ));
+  // }
+
+  var getComposeEnhancers = () => {
+    if (window.navigator.userAgent.includes('Chrome')) {
+      return redux.compose(
+        redux.applyMiddleware(thunk)
+        ,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+      );
+    }
+    return redux.compose(redux.applyMiddleware(thunk) );
+  };
+  var store = redux.createStore(reducers, initialState, getComposeEnhancers() );
+
 
   return store;
 };

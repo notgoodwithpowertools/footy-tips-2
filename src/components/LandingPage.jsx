@@ -7,7 +7,8 @@ import {
 } from 'react-router-dom';
 
 // import Login from './Login.jsx';
-import '../button.css';
+import '../css/landing.css';
+import '../css/button.css';
 
 // Refactor to stateless functional Component
 var LandingPage = (props) => {
@@ -19,8 +20,8 @@ var LandingPage = (props) => {
         <h1 className="heading">Landing Page</h1>
       </div>
       <div className="second">
-        <button className="button1 myButton"><Link to='/login'>Log in</Link></button>
-        <button className="button2 myButton"><Link to='/register'>Register</Link></button>
+        <Link className="button2 link" to='/login'>Signin</Link>
+        <Link className="button2 link"to='/register'>Register</Link>
 
       </div>
     </div>

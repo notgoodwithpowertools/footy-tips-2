@@ -10,3 +10,6 @@ npm install --save firebase
 
 Environment Variables
 Create .env file in project root with env Variables
+
+
+npm install --save redux react-redux redux-thunk react-router-dom firebase

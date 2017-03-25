@@ -1,0 +1,20 @@
+@font-face {
+  font-family: Ubuntu;
+  src: local(Ubuntu), url(../fonts/Ubuntu-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: local('Open Sans'), url(../fonts/opensans/OpenSans-Regular.ttf) format('truetype');
+}
+h1 {
+  font-family: 'Open Sans';
+  /*font-family: Ubuntu;*/
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Ubuntu;
+  /*font-family: 'Open Sans';*/
+}

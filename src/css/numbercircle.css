@@ -1,0 +1,16 @@
+.numbercircle {
+    /*font: 32px Arial, sans-serif;*/
+    font: 32px 'Open Sans';
+    width: 2em;
+    height: 2em;
+    box-sizing: initial;
+
+    background: green;
+    border: 0.1em solid yellow;
+    color: white;
+    text-align: center;
+    border-radius: 50%;
+
+    line-height: 2em;
+    box-sizing: content-box;
+}

@@ -8,8 +8,8 @@ import {
   Link
 } from 'react-router-dom';
 
-import './App.css';
-import './index.css';
+import './css/App.css';
+import './css/index.css';
 
 
 
@@ -30,9 +30,9 @@ import * as authActions from './actions/auth-actions.js';
 export class MyApp extends React.Component {
 
   onLogout (e) {
-      var {dispatch} = this.props;
-      e.preventDefault();
-      dispatch(authActions.startLogout());
+    var {dispatch} = this.props;
+    e.preventDefault();
+    dispatch(authActions.startLogout());
   }
 
 
@@ -64,63 +64,61 @@ export class MyApp extends React.Component {
     const protect = (aComponent) => {
 
       if (!user) {
-         return LandingPage;
-        }
-       else {
-         return aComponent;
-       }
-     };
-
-
+        return LandingPage;
+      }
+      else {
+        return aComponent;
+      }
+    };
 
     return (
 
 
-    <Router>
-      <div>
-        {menu()}
+      <Router>
+        <div>
+          {menu()}
 
-        <hr/>
+          <hr/>
 
-        {/* }<Route exact path="/" component={Home}/> */}
-        <Route exact path="/" render={() => (
-          user ?
-          <Home /> :
-          <Redirect to="/start" />
-        )}/>
-      {/*}<Route path="/home" render={() => (
+          {/* }<Route exact path="/" component={Home}/> */}
+          <Route exact path="/" render={() => (
+              user ?
+              <Home /> :
+              <Redirect to="/start" />
+          )}/>
+          {/*}<Route path="/home" render={() => (
             user ?
             <Home /> :
             <Redirect to="/start" />
-          )}/> */}
-      <Route path="/login" render={() => (
-        user ?
-        <Redirect to="/home" /> :
-        <Login />
-      )}/>
-    <Route path="/register" render={() => (
-        user ?
-        <Redirect to="/home" /> :
-        <Register />
-      )}/>
-      <Route path="/start" render={() => (
-          user ?
-          <Redirect to="/home" /> :
-          <LandingPage />
-        )}/>
-        <Route path="/home" render={protect(Home)} />
-        <Route path="/user" component={protect(User)} />
-        {/* <Route path="/topics" render={({Topics}) => (<Redirect to="/start" />)}/> */}
-        <Route path="/topics" render={protect(Topics)} />
-        {/* <Route path="/login" component={Login} /> */}
-        <Route path="/about" component={About} />
-        {/*<Route path="/about" render={protect(About)}/> */}
-        {/*<Route path="/start" component={LandingPage} /> */}
-        <Route render={() => (<Redirect to="/home" />)}/>
-      </div>
-    </Router>
-  )
-  }
+            )}/> */}
+          <Route path="/login" render={() => (
+              user ?
+              <Redirect to="/home" /> :
+              <Login />
+          )}/>
+          <Route path="/register" render={() => (
+              user ?
+              <Redirect to="/home" /> :
+              <Register />
+          )}/>
+          <Route path="/start" render={() => (
+              user ?
+              <Redirect to="/home" /> :
+              <LandingPage />
+          )}/>
+          <Route path="/home" render={protect(Home)} />
+          <Route path="/user" component={protect(User)} />
+          {/* <Route path="/topics" render={({Topics}) => (<Redirect to="/start" />)}/> */}
+          <Route path="/topics" render={protect(Topics)} />
+          {/* <Route path="/login" component={Login} /> */}
+          <Route path="/about" component={About} />
+          {/*<Route path="/about" render={protect(About)}/> */}
+          {/*<Route path="/start" component={LandingPage} /> */}
+          <Route render={() => (<Redirect to="/home" />)}/>
+        </div>
+      </Router>
+      )
+    }
 };
 
 export default Redux.connect(

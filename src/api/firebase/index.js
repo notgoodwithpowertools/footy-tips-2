@@ -1,6 +1,8 @@
 import firebase from 'firebase';
 
 console.log("process.env.NODE_ENV", process.env.NODE_ENV);
+console.log("authDomain", process.env.REACT_APP_AUTH_DOMAIN);
+
 
 try {
 

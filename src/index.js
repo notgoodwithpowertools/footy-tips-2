@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 var store = require('./store/configureStore.jsx').configure();
 
 import * as authActions from './actions/auth-actions.js';
+// import * as playerActions from './actions/player-actions.js';
 
 //Use Firebase to control user page redirection depending on login state
 import firebase from './api/firebase/index.js';
@@ -18,6 +19,9 @@ firebase.auth().onAuthStateChanged( (user) => {
     //store.dispatch(authActions.login(user.uid));
     store.dispatch(authActions.login(user.uid));
     store.dispatch(authActions.startAddUser(user.uid));
+
+    // store.dispatch(playerActions.startAddPlayers());
+
   } else {
     store.dispatch(authActions.logout());
   }

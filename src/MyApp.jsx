@@ -15,6 +15,7 @@ import './css/index.css';
 
 import Home from './components/Home.jsx';
 import About from './components/About.jsx';
+import LeaderBoard from './components/LeaderBoard.jsx';
 //import Topic from './components/Topic.jsx';
 import Topics from './components/Topics.jsx';
 import Login from './components/Login.jsx';
@@ -28,6 +29,10 @@ import * as authActions from './actions/auth-actions.js';
 
 //const BasicExample = () => (
 export class MyApp extends React.Component {
+
+  componentDidMount () {
+    // const leaderboardRef = firebase.database().ref.child('leaderboard');
+  }
 
   onLogout (e) {
     var {dispatch} = this.props;
@@ -48,6 +53,7 @@ export class MyApp extends React.Component {
         return (
           <ul>
             <li><Link to="/home">Home</Link></li>
+            <li><Link to="/leaderboard">Leaderboard</Link></li>
             <li><Link to="/user">User</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/topics">Topics</Link></li>
@@ -107,6 +113,7 @@ export class MyApp extends React.Component {
               <LandingPage />
           )}/>
           <Route path="/home" render={protect(Home)} />
+          <Route path="/leaderboard" component={protect(LeaderBoard)} />
           <Route path="/user" component={protect(User)} />
           {/* <Route path="/topics" render={({Topics}) => (<Redirect to="/start" />)}/> */}
           <Route path="/topics" render={protect(Topics)} />

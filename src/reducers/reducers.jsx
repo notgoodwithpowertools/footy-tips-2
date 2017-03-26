@@ -50,3 +50,27 @@ export var msgReducer = (state = '', action) => {
       return state;
   }
 }
+
+export var leaderboardReducer = (state = '', action) => {
+
+  switch (action.type) {
+    case 'ADD_PLAYERS':
+    console.log("Adding Players...");
+    return [
+      ...state,
+      ...action.players
+    ];
+    case 'UPDATE_PLAYERS':
+    console.log("Updating Players...");
+    return [
+      // ...state,
+      ...action.players
+    ];
+    case 'LOGOUT':
+    return [];
+
+    default:
+    return state;
+  }
+
+}

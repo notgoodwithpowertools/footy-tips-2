@@ -3,13 +3,14 @@ import * as redux from 'redux';
 import thunk from 'redux-thunk';
 
 //var {searchTextReducer, showCompletedReducer, todosReducer} = require('../reducers/reducers.jsx');
-import { authReducer, userReducer, msgReducer } from '../reducers/reducers.jsx';
+import { authReducer, userReducer, msgReducer, leaderboardReducer } from '../reducers/reducers.jsx';
 
 export var configure = (initialState={}) => {
   var reducers = redux.combineReducers({
     auth: authReducer,
     user: userReducer,
-    msg: msgReducer
+    msg: msgReducer,
+    leaderboard: leaderboardReducer
   });
 
   console.log("Window:", window.navigator.userAgent);

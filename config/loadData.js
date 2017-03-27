@@ -333,6 +333,25 @@ tipsRef.set(tips, function(error) {
 });
 
 
+var courses = [
+  {}
+
+
+];
+
+var coursesRef = db.ref('/courses');
+
+coursesRef.set(courses, function(error) {
+  if (error) {
+    console.log("Courses data could not be saved.", error);
+  } else {
+    console.log("Courses data saved successfully.");
+    /*ref.once("value", function(snapshot) {
+      console.log(snapshot.val());
+    });*/
+  }
+});
+
 
 ref.once("value", function(snapshot) {
   console.log('Finish...', snapshot.val());

@@ -13,6 +13,8 @@ export class LeaderBoard extends React.Component {
 
   componentDidMount () {
 
+    console.log("LeaderBoard component did mount...");
+
     var { dispatch } = this.props;
     var leaderboardRef = firebaseRef.child(`/leaderboard`);
 
@@ -38,12 +40,12 @@ export class LeaderBoard extends React.Component {
   render () {
 
     var sortPlayers = ( a, b ) => {
-     console.log("pre a:", a);
-     console.log("pre b:", b);
+    //  console.log("pre a:", a);
+    //  console.log("pre b:", b);
       a = Number(a.score);
       b = Number(b.score);
-      console.log("a:", a);
-      console.log("b:", b);
+      // console.log("a:", a);
+      // console.log("b:", b);
       if (a < b) {
         return 1;
       }

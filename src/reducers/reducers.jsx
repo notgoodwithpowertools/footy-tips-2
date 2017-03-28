@@ -66,8 +66,8 @@ export var leaderboardReducer = (state = '', action) => {
       // ...state,
       ...action.players
     ];
-    case 'LOGOUT':
-    return [];
+    // case 'LOGOUT':
+    // return state;
 
     default:
     return state;

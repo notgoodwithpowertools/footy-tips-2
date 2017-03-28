@@ -113,7 +113,7 @@ export class MyApp extends React.Component {
               <LandingPage />
           )}/>
           <Route path="/home" render={protect(Home)} />
-          <Route path="/leaderboard" component={protect(LeaderBoard)} />
+          <Route path="/leaderboard" component={LeaderBoard} />
           <Route path="/user" component={protect(User)} />
           {/* <Route path="/topics" render={({Topics}) => (<Redirect to="/start" />)}/> */}
           <Route path="/topics" render={protect(Topics)} />
@@ -121,7 +121,7 @@ export class MyApp extends React.Component {
           <Route path="/about" component={About} />
           {/*<Route path="/about" render={protect(About)}/> */}
           {/*<Route path="/start" component={LandingPage} /> */}
-          <Route render={() => (<Redirect to="/home" />)}/>
+          {/*<Route render={() => (<Redirect to="/home" />)}/> */}
         </div>
       </Router>
       )

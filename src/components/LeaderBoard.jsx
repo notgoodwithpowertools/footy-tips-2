@@ -71,7 +71,7 @@ export class LeaderBoard extends React.Component {
       filteredPlayers.sort(sortPlayers)
     };
     // leaderboard.sort(sortPlayers);
-    console.log("Array?", Array.isArray(leaderboard), Array.isArray(filteredPlayers) );
+    // console.log("Array?", Array.isArray(leaderboard), Array.isArray(filteredPlayers) );
     // filteredPlayers.sort();
     // filteredPlayers.sort((a, b) => {
     //   if (a.score < b.score) {
@@ -96,10 +96,15 @@ export class LeaderBoard extends React.Component {
         )
       }
 
-      return filteredPlayers.map( (player) => {
-        console.log("team.id:", player.id);
+      return filteredPlayers.map( (player, index) => {
+        // console.log("team.id:", player.id);
+        //var i = 1;
+        console.log("Player score:", player.score);
+        console.log("Player name:", player.name);
+
+        var rank = index + 1;
         return (
-          <Player key={player.id} {...player} />
+          <Player key={player.id} {...player} rank={rank}/>
         )
       });
 

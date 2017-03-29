@@ -28,9 +28,12 @@ export class LeaderBoard extends React.Component {
       Object.keys(players).forEach( (playerId) => {
         parsedPlayers.push({
           id: playerId,
+          // parsedRoundScores,
           ...players[playerId]
         });
       });
+
+      console.log("parsedPlayers:", parsedPlayers);
 
       dispatch(updatePlayers(parsedPlayers));
     });
@@ -56,34 +59,12 @@ export class LeaderBoard extends React.Component {
     }
 
     var { leaderboard } = this.props;
-    console.log("leaderboard:", leaderboard);
-    // var filteredPlayers = leaderboard.sort();
-
-    // var sortArray = [9, 5, 4, 7, 8];
-    // var sortArray = [{name: 'wally', score: '123'}, 5, 4, 7, 8];
-    // console.log("SortArray:", sortArray);
-    // sortArray.sort();
-    // console.log("SortArray:", sortArray);
-
-    // var filteredPlayers = leaderboard.sort(sortPlayers());
+    // console.log("leaderboard:", leaderboard);
     var filteredPlayers = leaderboard;
     if (filteredPlayers.length > 0) {
       filteredPlayers.sort(sortPlayers)
     };
-    // leaderboard.sort(sortPlayers);
-    // console.log("Array?", Array.isArray(leaderboard), Array.isArray(filteredPlayers) );
-    // filteredPlayers.sort();
-    // filteredPlayers.sort((a, b) => {
-    //   if (a.score < b.score) {
-    //     return -1;
-    //   }
-    //   if (a.score > b.score) {
-    //     return 1;
-    //   }
-    //   return 0;
-    // });
-    // filterPlayers.sort();
-    //console.log("showCompleted:", showCompleted);
+
     var renderPlayers = () => {
 
       //var filterPlayers = FTipsAPI.filterGames(games, round);
@@ -97,21 +78,16 @@ export class LeaderBoard extends React.Component {
       }
 
       return filteredPlayers.map( (player, index) => {
-        // console.log("team.id:", player.id);
-        //var i = 1;
-        console.log("Player score:", player.score);
-        console.log("Player name:", player.name);
-
         var rank = index + 1;
         return (
           <Player key={player.id} {...player} rank={rank}/>
         )
       });
-
     }
 
     return (
       <div>
+        <h2>Footy Tipping 2017 Leader Board</h2>
         {renderPlayers()}
       </div>
     )

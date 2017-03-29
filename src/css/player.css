@@ -1,3 +1,7 @@
+h2 {
+  text-align: center;
+}
+
 .background {
   background-color: white;
 }
@@ -6,20 +10,19 @@
   display: flex;
   /*background-color: yellow;*/
   background-color: #f5f5f5;
-  height: 50px;
+  /*height: 50px;*/
   align-items: center;
   padding: 5px;
   margin: 15px;
   box-shadow: 5px 5px 5px #999999;
   justify-content: space-between;
   align-items: center;
-
 }
 
 .details {
   display: flex;
   /*background-color: red;*/
-  flex: 60%;
+  flex: 35%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -31,16 +34,18 @@
   /*background-color: blue;*/
   /*padding: 10px;*/
   align-items: center;
-  justify-content: flex-end;
-  flex: 40%;
+  justify-content: center;
+  flex: 15%;
 }
 
 .results {
   display: flex;
-  background-color: purple;
+  /*background-color: purple;*/
   /*padding: 10px;*/
-  flex: 30%;
-  justify-content: flex-end;
+  flex: 50%;
+  flex-wrap: wrap;
+  /*margin: 5px;*/
+  /*justify-content: center;*/
 }
 
 
@@ -62,7 +67,7 @@
     height: 2em;
     box-sizing: initial;
 
-    background: #095692;
+    background-color: #095692;
     /*border: 0.1em solid yellow;*/
     color: white;
     text-align: center;
@@ -71,6 +76,52 @@
     line-height: 2em;
     box-sizing: content-box;
 }
+
+.numbersquare {
+    /*font: 32px Arial, sans-serif;*/
+
+    font: 12px 'Open Sans';
+    width: 2em;
+    height: 2em;
+    /*box-sizing: initial;*/
+
+    background-color: #095692;
+    /*border: 0.1em solid yellow;*/
+    color: white;
+    text-align: center;
+    /*border-radius: 50%;*/
+
+    line-height: 2em;
+    box-sizing: content-box;
+    margin: 3px;
+}
+
+.numbersquare.red {
+  background-color: #bd1010;
+}
+
+
+@media (max-width: 450px) {
+  .results {
+    display: none;
+  }
+  .total {
+    justify-content: flex-end;
+  }
+  .second {
+    flex-direction: column;
+    /*justify-content: space-between;*/
+    /*align-items: center;*/
+  }
+  .button1 {
+    margin-bottom: 10px;
+  }
+  h1 {
+    font-size: 5vw;
+    color: green;
+  }
+}
+
 
 /* Not really using anything beyond this */
 
@@ -88,21 +139,5 @@
   display: flex;
   background-color: yellow;
   justify-content: flex-end;
-}
-.numbersquare {
-    /*font: 32px Arial, sans-serif;*/
 
-    font: 12px 'Open Sans';
-    width: 2em;
-    height: 2em;
-    /*box-sizing: initial;*/
-
-    background: #095692;
-    /*border: 0.1em solid yellow;*/
-    color: white;
-    text-align: center;
-    /*border-radius: 50%;*/
-
-    line-height: 2em;
-    box-sizing: content-box;
 }

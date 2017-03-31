@@ -62,9 +62,12 @@ export class Player extends React.Component {
     var getResultList = () => {
       if (roundscores !== undefined) {
         var outputArray = [];
+        score = 0;
         for (const key of Object.keys(roundscores)) {
           // console.log("Object:", key, roundscores[key]);
           // console.log("Key:", key + " myObject @ key:", roundscores[key]);
+          score += roundscores[key];
+
           var highlightClass = 'numbersquare'
           if (roundscores[key] === 9 ) {
             highlightClass = 'red numbersquare'
@@ -100,11 +103,12 @@ export class Player extends React.Component {
       <div className='playerRow'>
         {/* <div className='details'><div className='numbercircle'>{rank}</div><img src={require(`../images/${imageName}.png`) } alt={require('../images/george.png') }/><p className='player'>{name}</p></div> */}
         <div className='details'><div className='numbercircle'>{rank}</div><img className='pic' src={ imageName } alt={require('../images/george.png') }/><p className='player'>{name}</p></div>
-        <div className='total'><div className='totalBox'>{score}</div> </div>
+
         <div className='results'>
           {getResultList()}
 
         </div>
+        <div className='total'><div className='totalBox'>{score}</div> </div>
       </div>
 
     )

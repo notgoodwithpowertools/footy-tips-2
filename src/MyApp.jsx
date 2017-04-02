@@ -51,6 +51,7 @@ export class MyApp extends React.Component {
 
       if ( user ) {
         return (
+          <div>
           <ul>
             <li><Link to="/home">Home</Link></li>
             <li><Link to="/leaderboard">Leaderboard</Link></li>
@@ -62,6 +63,8 @@ export class MyApp extends React.Component {
             <li><Link to="/start">Start</Link></li>
             <li><Link to="#" onClick={this.onLogout.bind(this)}>Logout</Link></li>
           </ul>
+          <hr/>
+          </div>
         )
       }
     }
@@ -84,7 +87,7 @@ export class MyApp extends React.Component {
         <div>
           {menu()}
 
-          <hr/>
+
 
           {/* }<Route exact path="/" component={Home}/> */}
           <Route exact path="/" render={() => (

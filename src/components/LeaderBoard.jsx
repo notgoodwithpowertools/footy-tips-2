@@ -4,6 +4,7 @@ var {connect} = require('react-redux');
 import Player from './Player.jsx';
 import { updatePlayers } from '../actions/player-actions.js';
 import { firebaseRef } from '../api/firebase/index.js';
+import { rankPlayers } from '../api/rank.js';
 
 export class LeaderBoard extends React.Component {
 
@@ -33,7 +34,7 @@ export class LeaderBoard extends React.Component {
         });
       });
 
-      console.log("parsedPlayers:", parsedPlayers);
+      console.log("parsedPlayers (returned from Firebase - unranked):", parsedPlayers);
 
       dispatch(updatePlayers(parsedPlayers));
     });
@@ -42,27 +43,28 @@ export class LeaderBoard extends React.Component {
 
   render () {
 
-    var sortPlayers = ( a, b ) => {
-    //  console.log("pre a:", a);
-    //  console.log("pre b:", b);
-      a = Number(a.score);
-      b = Number(b.score);
-      // console.log("a:", a);
-      // console.log("b:", b);
-      if (a < b) {
-        return 1;
-      }
-      if (a > b) {
-        return -1;
-      }
-      return 0;
-    }
+    // var sortPlayers = ( a, b ) => {
+    // //  console.log("pre a:", a);
+    // //  console.log("pre b:", b);
+    //   a = Number(a.score);
+    //   b = Number(b.score);
+    //   // console.log("a:", a);
+    //   // console.log("b:", b);
+    //   if (a < b) {
+    //     return 1;
+    //   }
+    //   if (a > b) {
+    //     return -1;
+    //   }
+    //   return 0;
+    // }
 
     var { leaderboard } = this.props;
     // console.log("leaderboard:", leaderboard);
     var filteredPlayers = leaderboard;
     if (filteredPlayers.length > 0) {
-      filteredPlayers.sort(sortPlayers)
+      filteredPlayers = rankPlayers(leaderboard);
+      // filteredPlayers.sort(sortPlayers)
     };
 
     var renderPlayers = () => {

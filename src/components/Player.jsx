@@ -16,7 +16,7 @@ export class Player extends React.Component {
 
   render () {
 
-    var {name, score, rank, roundscores} = this.props;
+    var {name, rank, roundscores, totalScore} = this.props;
 
     // console.log("name:", name);
     /*
@@ -62,11 +62,11 @@ export class Player extends React.Component {
     var getResultList = () => {
       if (roundscores !== undefined) {
         var outputArray = [];
-        score = 0;
+        // var score = 0;
         for (const key of Object.keys(roundscores)) {
           // console.log("Object:", key, roundscores[key]);
           // console.log("Key:", key + " myObject @ key:", roundscores[key]);
-          score += roundscores[key];
+          // score += roundscores[key];
 
           var highlightClass = 'numbersquare'
           if (roundscores[key] === 9 ) {
@@ -108,7 +108,7 @@ export class Player extends React.Component {
           {getResultList()}
 
         </div>
-        <div className='total'><div className='totalBox'>{score}</div> </div>
+        <div className='total'><div className='totalBox'>{totalScore}</div> </div>
       </div>
 
     )

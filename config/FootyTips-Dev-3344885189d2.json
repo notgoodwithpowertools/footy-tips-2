@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "footytips-dev",
+  "private_key_id": "3344885189d29ebb6bd4b479e944b6f6092f6772",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDJliE35Be0LYuV\nl2a+T3xIX98yFRV8wODuinLQZIIKkbQ3Gq/O0WY2ywPvgcjakfJveuizOFBKfC3b\nqDjeb0MHIYDR1xuoCJGWNjIjJkrwymGqqMc4cOmgZoQwgvLQ5p0LidCs4EAqMv3H\nRz2mRoJ1/rfMmeRXl0FHxSWVwWdiIehtznJs6K3oCXIa2FcvFQk64i5BsSvcH4Uo\nnbgf5ct1LdfSKlCP+NoHHAaPn1+XoRv2zPCeSKmkw9HZ3Z6j2D8ZMxhnubcit0cY\n4DjlNNfso5BQwNsj3PTSOnwWF8wN6wnVMEZMsohfsKL6Z0SbP0X6jM1kQFnR26ml\nEsG90fZxAgMBAAECggEAAu82iJO/bJYFJCZSDo8lpgAPRbFc4LYGEDLfvPzZj8HT\nN8IhsQcHT+Dgq8nd3KCnQMwvOvyk3pC0MjBes443EZGBSIyzEF0fkWo0jKJwENVB\nWrSeQcoS/IzBe9tMIZJZ0uMssHeLN5IKc64rzZHVMFaG4mmTE1tWTe8mvulT0e/Z\nzmjnR75Eld5BxNwDF6bHRvl3Zwl/qSii2EMx40L8Vpw7dF6wqRU7nPrS/QnNhyNr\nm2xCudnl928dZv22iYdQWez52t6UlRPxuCAdg8++drzM/UtoK4YEYRuQKDTwWXHx\nh/XTq/CriSD7+RRJAp+6F5hmufeixmKrd0ms2Z1FqQKBgQDqJi1KqTnFNh1en6J0\nPZQ3upL/S9oZbhDomPz31K6Rj9y1hJGFygmBy35+7sbowEVu9WVlBqiXpCDHBBfJ\nu7YxHCsqU+Jzs2ze47FYEw8MRd/96AqPiicqNygb1EhffCr0NIutd/2U23GfLI3T\nGswAq0hjHxrplvVNLayux/LRrwKBgQDcZge+79AYbHajjPrdIU2VdWBBm/iyL7i9\nmDRMyJD12EiHk1PRz5+6Y7/i5vB2lrN+Fl7rF7nhV9OoDlzEeRQiDMaDUXFwm7HG\nHADR0DMjifrsjAbxL+601h90LR89xkRiZlD49ePIorKkyxi/nTvMvJ5+B1R3vO1g\nxXLq5kZh3wKBgQCvX5TAvOr2GMf6nVoR8iVXcDi1Wlyqe1PSwvOFtBhkEfpfQkG0\nkVR5kK7X54O3xHq81rPw7QHNQjMCnMAsapnVQqHZ/CY6PoMmlie4Ld4xdQyFogx2\n4iTfa5xw65ihW+DYM5sCfELEAXCipb48BXASeDepdhy0JErqWXFjH4NxJQKBgBjP\n27thIBo/y7Np4awXXbafujBosLzOpouhoPGr+rXSnYe1zE/ogeDn7ehLe3K+UIK3\nXgQ1bZWy338h7sunnd6fdZG/D3hP7tmQuX7lY3xywi7zLKzmaoctO+lGUygPNA+n\n2SHN/NDPkDEBNE4OE3dfHLCvfpDkUgz87Y0IU5AdAoGASKPfwa9Cns5O6KKoLgUt\nyPn8sbVsAoWtkqq9oaKPv2OJJoG6h0IrNbsqmTYGrC1EBMWC9aJtOmVWl9yQj8cB\nuJL457ylOjgfLsWjDwTxt+KGQggjbWB0VpgxZPypw4po2oEpfuFx6W/xs49mOVQk\nEYR/S04pHPtpWB0Fm91q2V0=\n-----END PRIVATE KEY-----\n",
+  "client_email": "footytips-dev@appspot.gserviceaccount.com",
+  "client_id": "108644465921165004895",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/footytips-dev%40appspot.gserviceaccount.com"
+}

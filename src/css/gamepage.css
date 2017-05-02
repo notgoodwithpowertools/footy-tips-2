@@ -1,0 +1,106 @@
+.panel {
+  display:flex;
+  /*background-color: pink;*/
+  background-color: #f8f8f8;
+  width: 100%;
+  color: #434347;
+  /*font-style: italic;*/
+  align-items: center;
+  font-size: small;
+  border-bottom-color: #dadada;
+  border-bottom-style: solid;
+  border-bottom-width: thin;
+  /*margin: 10px;*/
+  /*padding: 15px;*/
+  /*justify-content: space-between;*/
+}
+
+.panelItem {
+  display: flex;
+  /*background-color: red;*/
+  flex: none;
+  margin-left: 10px;
+}
+
+.gamePanel {
+  /*background-color: white;*/
+  /*background-color: yellow;*/
+  justify-content: center;
+  /*padding: 5px;*/
+}
+
+.gameItem {
+  flex: 33%;
+  display: flex;
+  background-color: white;
+  justify-content: center;
+  padding: 5px;
+}
+
+.gameDetails {
+  flex: 50%;
+
+  display: flex;
+  /*flex-direction: column;*/
+  /*background-color: black;*/
+  align-items: center;
+  justify-content: center;
+
+}
+
+.gameStatus {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 5px;
+  height: 45px;
+  /*background-color: black;*/
+}
+
+.gameVenue {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  background: #b11;
+  color: white;
+  padding: 5px;
+  width: 120px;
+  min-height: 20px;
+  align: center;
+  /*flex-wrap: wrap;*/
+}
+
+.gameResultTxt {
+  padding: 0;
+  margin: 0;
+}
+
+
+.badge {
+  position: relative;
+  /*top: 25px;*/
+  /*left: -5px;*/
+  color: red;
+}
+
+.statusIcon {
+  width: 35px;
+  height: 35px;
+}
+
+@media (max-width: 400px) {
+  .teamIcon {
+    width: 40px;
+    height: 35px;
+  }
+  .statusIcon {
+    width: 25px;
+    height: 25px;
+  }
+  .gameVenue {
+    min-height: 15px;
+  }
+}

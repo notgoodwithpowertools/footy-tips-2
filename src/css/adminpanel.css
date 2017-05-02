@@ -1,0 +1,47 @@
+.adminPanel {
+  display: flex;
+  /*background-color: pink;*/
+  background-color: #f8f8f8;
+  /*width: 100%;*/
+  color: #434347;
+  /*font-style: italic;*/
+  /*justify-content: ;*/
+  align-items: center;
+  font-size: small;
+  flex-direction: column;
+  /*border-bottom-color: #dadada;
+  border-bottom-style: solid;
+  border-bottom-width: thin;*/
+  /*margin: 10px;*/
+  /*padding: 15px;*/
+  /*justify-content: space-between;*/
+}
+
+.adminButton {
+  background: linear-gradient(to bottom, #FFFFFF 0, #FAB149 2%, #EB5168 100%) repeat scroll 0 0 transparent;
+  /*border: 1px solid #FAB149;*/
+  -ms-border-radius: 3px;
+  border-radius: 3px;
+  /*-webkit-box-shadow: 0 1px 2px #999999;
+  -ms-box-shadow: 0 1px 2px #999999;
+  box-shadow: 0 1px 2px #999999;*/
+  color: #FFFFFF;
+  cursor: pointer;
+  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+  /*font-family: 'Open Sans';*/
+  font-size: 13px;
+  font-weight: bold;
+  /*-ms-text-shadow: 0 -1px #099FDF;*/
+  /*text-shadow: 0 -1px #099FDF;*/
+  margin: 4px;
+  width: 85px;
+  vertical-align: central;
+  align-items: center;
+  text-decoration: none;
+  /*font: Ubuntu;*/
+  /*font: 'Open Sans';*/
+  /*display: inline-block;*/
+
+  text-align: center;
+  padding: 6px 0;
+}

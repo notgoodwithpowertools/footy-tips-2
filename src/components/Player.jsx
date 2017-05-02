@@ -47,7 +47,7 @@ export class Player extends React.Component {
     }
 
     // roundscores = [2,5,7,9,11];
-    console.log("roundscores:", roundscores);
+    // console.log("roundscores:", roundscores);
     // var myObject = {
     //   1: 4,
     //   2: 5,

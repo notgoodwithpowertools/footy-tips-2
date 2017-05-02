@@ -2,8 +2,8 @@ import React from 'react';
 var {connect} = require('react-redux');
 
 import Player from './Player.jsx';
-// import { updatePlayers } from '../actions/player-actions.js';
-// import { firebaseRef } from '../api/firebase/index.js';
+import { updatePlayers } from '../actions/player-actions.js';
+import { firebaseRef } from '../api/firebase/index.js';
 import { rankPlayers } from '../api/rank.js';
 
 export class LeaderBoard extends React.Component {
@@ -15,7 +15,7 @@ export class LeaderBoard extends React.Component {
   componentDidMount () {
 
     console.log("LeaderBoard component did mount...");
-/*
+
     var { dispatch } = this.props;
     var leaderboardRef = firebaseRef.child(`/leaderboard`);
 
@@ -38,7 +38,7 @@ export class LeaderBoard extends React.Component {
 
       dispatch(updatePlayers(parsedPlayers));
     });
-*/
+
   } // end -- componentDidMount
 
   render () {

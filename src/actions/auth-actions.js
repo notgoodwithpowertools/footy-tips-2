@@ -16,7 +16,7 @@ export var setMsg = (msg) => {
 };
 */
 export var login = (uid) => {
-  console.log("login action...");
+  // console.log("login action...");
   return {
     type: 'LOGIN',
     uid: uid
@@ -46,7 +46,7 @@ export var startAddUser = () => {
     var uid = getState().auth.uid;
     console.log("startAddUser:", uid);
     var userRef = firebaseRef.child(`users/${uid}/info`);
-    console.log("userRef:", userRef.value);
+    // console.log("userRef:", userRef.value);
     userRef.once("value", function(data) {
       // do some stuff once
       console.log("User Info Data:", data.val());
@@ -135,3 +135,28 @@ export function saveUser (user, firstname) {
     })
     .then(() => user)
 }
+
+export var setUserAdmin = (admin) => {
+  return {
+    type: 'SET_USER_ADMIN',
+    admin: admin
+  };
+};
+
+export var monitorRole = (uid) => {
+  return (dispatch, getState) => {
+    var adminRef = firebaseRef.child(`admins/${uid}`);
+    adminRef.on('value', snap => {
+
+      console.log("snap.val() admin value", snap.val());
+      var isAdmin = snap.val()
+      if (isAdmin) {
+        console.log("User has role of Admin");
+      }
+      else {
+        console.log("User is NOT an Admin");
+      }
+      dispatch(setUserAdmin(isAdmin));
+    });
+  }
+};

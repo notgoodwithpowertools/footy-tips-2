@@ -17,11 +17,13 @@ import Home from './components/Home.jsx';
 import About from './components/About.jsx';
 import LeaderBoard from './components/LeaderBoard.jsx';
 //import Topic from './components/Topic.jsx';
+import Tips from './components/Tips.jsx';
 import Topics from './components/Topics.jsx';
 import Login from './components/Login.jsx';
 import Register from './components/Register.jsx';
 import LandingPage from './components/LandingPage.jsx';
 import User from './components/User.jsx';
+import GamePage from './components/GamePage.jsx';
 // import Spinner from './components/Spinner.jsx';
 
 import * as authActions from './actions/auth-actions.js';
@@ -55,6 +57,8 @@ export class MyApp extends React.Component {
           <ul>
             <li><Link to="/home">Home</Link></li>
             <li><Link to="/leaderboard">Leaderboard</Link></li>
+            <li><Link to="/tips">Tips</Link></li>
+            <li><Link to="/games">Games</Link></li>
             <li><Link to="/user">User</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/topics">Topics</Link></li>
@@ -117,6 +121,8 @@ export class MyApp extends React.Component {
           )}/>
           <Route path="/home" render={protect(Home)} />
           <Route path="/leaderboard" component={LeaderBoard} />
+          <Route path="/games" component={GamePage} />
+          <Route path="/tips" component={protect(Tips)} />
           <Route path="/user" component={protect(User)} />
           {/* <Route path="/topics" render={({Topics}) => (<Redirect to="/start" />)}/> */}
           <Route path="/topics" render={protect(Topics)} />

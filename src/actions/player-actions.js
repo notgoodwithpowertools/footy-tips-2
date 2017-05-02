@@ -1,11 +1,11 @@
 import { firebaseRef } from '../api/firebase/index.js';
 
-export var addPlayers = (players) => {
-  return {
-    type: 'ADD_PLAYERS',
-    players: players
-  }
-};
+// export var addPlayers = (players) => {
+//   return {
+//     type: 'ADD_PLAYERS',
+//     players: players
+//   }
+// };
 
 export var updatePlayers = (players) => {
   console.log("Players:", players);
@@ -32,6 +32,7 @@ export var getPlayerUpdates = () => {
 };
 */
 
+
 export var startAddPlayers = () => {
   console.log('startAddPlayers...');
   return (dispatch, getState) => {
@@ -40,7 +41,38 @@ export var startAddPlayers = () => {
     //var uid = getState().auth.uid;
     var leaderboardRef = firebaseRef.child(`/leaderboard`);
 
-    return leaderboardRef.once('value').then((snapshot) => {
+    // return leaderboardRef.once('value').then((snapshot) => {
+    leaderboardRef.on('value', snap => {
+      var players = snap.val() || {};
+      console.log('snap.val() players', players);
+      var parsedPlayers = [];
+
+      //translate to an array
+      Object.keys(players).forEach( (playerId) => {
+        parsedPlayers.push({
+          id: playerId,
+          ...players[playerId]
+        });
+
+      });
+      console.log('parsedPlayers:', parsedPlayers);
+      dispatch(updatePlayers(parsedPlayers));
+    });
+
+  };
+};
+
+/*
+export var startAddPlayers = () => {
+  console.log('startAddPlayers...');
+  return (dispatch, getState) => {
+
+    //Updated Firebase schema bu uid
+    //var uid = getState().auth.uid;
+    var leaderboardRef = firebaseRef.child(`/leaderboard`);
+
+    // return leaderboardRef.once('value').then((snapshot) => {
+    return leaderboardRef.on('value').then((snapshot) => {
       var players = snapshot.val() || {};
       console.log('snapshot.val() players', players);
       var parsedPlayers = [];
@@ -59,3 +91,4 @@ export var startAddPlayers = () => {
 
   };
 };
+*/

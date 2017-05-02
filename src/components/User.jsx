@@ -11,7 +11,7 @@ export class User extends React.Component {
   return (
     <div>
       <h2>Email - {user.email}</h2>
-      <h2>User - {user.firstname}</h2>
+      <h2>User Name - {user.firstname}</h2>
       <h2>UID - {user.uid}</h2>
 
     </div>

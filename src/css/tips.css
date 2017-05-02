@@ -1,0 +1,97 @@
+.tipsPanel {
+  display: flex;
+  background-color: #f8f8f8;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom-color: #dadada;
+  border-bottom-style: solid;
+  border-bottom-width: thin;
+  font-size: small;
+}
+
+.tipsPanelHeader {
+  width: 250px;
+  background-color: yellow;
+}
+
+.tipsGamePanel {
+  display: flex;
+  width: 250px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.tipsTeamItem {
+  flex: 20%;
+}
+
+.tipEditPanel {
+  display: flex;
+  width: 100px;
+  /*height: 30px;*/
+  /*padding: 5px;*/
+  /*margin-left: 20px;*/
+  border-left-color: #dadada;
+  border-left-style: solid;
+  border-left-width: thin;
+  border-bottom-width: thin;
+  justify-content: center;
+  align-items: center;
+  /*background-color: green;*/
+
+}
+
+.correctTip {
+  background-color: green;
+}
+
+.incorrectTip {
+  background-color: #db2525;
+}
+
+.tipEditIcon {
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  /*background-color: red;*/
+}
+
+.tipsGameIcon {
+  width: 40px;
+  height: 30px;
+  padding: 5px;
+}
+
+.tipsDetails {
+  /*background-color: #0f1164;*/
+  /*color: white;*/
+  flex: 60%;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  display: flex;
+  font-size: small;
+  /*height: 15px;*/
+  align-items: center;
+  justify-content: center;
+  /*font-weight: bold;*/
+
+}
+
+@media (max-width: 400px) {
+  .tipsGameIcon {
+    width: 30px;
+    height: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .tipsDetails {
+    display: none;
+  }
+  .tipsGamePanel {
+    max-width: 90px;
+    margin: 5px;
+  }
+}

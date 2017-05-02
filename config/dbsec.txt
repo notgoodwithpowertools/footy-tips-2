@@ -1,0 +1,29 @@
+".write": "root.child('/admins/$user_id').val() === false"
+".write": "root.child('admins').hasChild(auth.uid)"
+
+{
+  "rules": {
+    "teams": {
+      ".read": true,
+      ".write": false
+    },
+    "users": {
+      "$user_id": {
+        ".read": "$user_id === auth.uid",
+        ".write": "$user_id === auth.uid"
+      }
+    },
+    "leaderboard": {
+      ".read": true,
+      ".write": false
+    },
+    "games": {
+      ".read": true,
+      ".write": "root.child('/admins/' + auth.uid).val() === true"
+    },
+    "admins": {
+      ".read": true,
+      ".write": false
+    }
+  }
+}

@@ -8,7 +8,7 @@ import { firebaseRef } from '../api/firebase/index.js';
 // };
 
 export var updatePlayers = (players) => {
-  console.log("Players:", players);
+  // console.log("Players:", players);
   return {
     type: 'UPDATE_PLAYERS',
     players: players
@@ -44,7 +44,7 @@ export var startAddPlayers = () => {
     // return leaderboardRef.once('value').then((snapshot) => {
     leaderboardRef.on('value', snap => {
       var players = snap.val() || {};
-      console.log('snap.val() players', players);
+      // console.log('snap.val() players', players);
       var parsedPlayers = [];
 
       //translate to an array
@@ -55,7 +55,7 @@ export var startAddPlayers = () => {
         });
 
       });
-      console.log('parsedPlayers:', parsedPlayers);
+      // console.log('parsedPlayers:', parsedPlayers);
       dispatch(updatePlayers(parsedPlayers));
     });
 

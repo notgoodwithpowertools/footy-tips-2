@@ -53,11 +53,12 @@ export class GamesList extends React.Component {
     // var filteredGames = this.state.games;
     // console.log("getGamePanels... round:", round);
     // filteredGames = filterGames(this.state.games, round);
+    // console.log("getGamePanels... round:", round);
     var { round, admin, games } = this.props;
-    console.log("Getting games list from Redux...", games);
+    // console.log("Getting games list from Redux...", games);
 
     var filteredGames = games;
-    console.log("getGamePanels... round:", round);
+
     filteredGames = filterGames(games, round);
 
 
@@ -72,7 +73,7 @@ export class GamesList extends React.Component {
     return filteredGames.map( (game, index) => {
       console.log("Game:", game);
       return (
-        <GamePanel key={game.id} admin={admin} {...game} />
+        <GamePanel key={game.id} admin={admin} game={game} />
       )
     });
 

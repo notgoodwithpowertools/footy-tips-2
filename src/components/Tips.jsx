@@ -14,12 +14,14 @@ export class Tips extends React.Component {
 
   constructor() {
     super();
-    this.state = {games: [], tips: {}};
+    this.state = {games: [], tips: {} };
+    this.leaderboard = [];
     //this.getGamePanels = this.getGamePanels.bind(this);
     // this.loadGames();
     this.listUsers = this.listUsers.bind(this);
     this.getGamePanels = this.getGamePanels.bind(this);
     this.getUserTipPanels = this.getUserTipPanels.bind(this);
+    // this.handleGamePanelClick = this.handleGamePanelClick.bind(this);
   }
 
   // componentWillUnmount () {
@@ -28,31 +30,31 @@ export class Tips extends React.Component {
   // }
 
   componentWillMount () {
-    console.log("Tips componentWillMount...");
+    // console.log("Tips componentWillMount...");
     // var { round } = this.props;
-    var gamesRef = firebaseRef.child(`/games`);
-
-    gamesRef.on('value', snap => {
-
-      // return snap.val();
-      var games = snap.val() || {};
-      // console.log("snap.val() games:", snap.val());
-      var parsedGames = [];
-
-      Object.keys(games).forEach( (gameId) => {
-        parsedGames.push({
-          id: gameId,
-          // parsedRoundScores,
-          ...games[gameId]
-        });
-      });
+    // var gamesRef = firebaseRef.child(`/games`);
+    //
+    // gamesRef.on('value', snap => {
+    //
+    //   // return snap.val();
+    //   var games = snap.val() || {};
+    //   // console.log("snap.val() games:", snap.val());
+    //   var parsedGames = [];
+    //
+    //   Object.keys(games).forEach( (gameId) => {
+    //     parsedGames.push({
+    //       id: gameId,
+    //       // parsedRoundScores,
+    //       ...games[gameId]
+    //     });
+    //   });
 
       // console.log("games (parsed from Firebase):", parsedGames);
       // update the component state with received game data
-      this.setState({games: parsedGames});
+      // this.setState({games: parsedGames});
       // update the Redux state with received game data
       // dispatch(updateGames(parsedGames));
-    });
+    // });
 
     var tipsRef = firebaseRef.child(`/tips/`);
     tipsRef.on('value', snap => {
@@ -82,8 +84,13 @@ export class Tips extends React.Component {
 
   }
 
+  // handleGamePanelClick (teamId) {
+  //   console.log("Game panel clicked...Setting result to:", teamId);
+  // }
+
   listUsers () {
-    var { users } = this.props;
+    var { users, user } = this.props;
+    this.leaderboard=[];
 
     //var filterPlayers = FTipsAPI.filterGames(games, round);
 
@@ -94,16 +101,27 @@ export class Tips extends React.Component {
         </div>
       )
     }
-
+    var userClass = "";
     // return <p>listUsers</p>
-    return users.map( (user, index) => {
+
+    return users.map( (aUser, index) => {
       // console.log("User:", user.name);
       // return (
       //   <GamePanel key={game.id} admin={admin} {...game} />
       // )
+      // console.log("User IDs:", aUser.id + " : " + user.uid);
+      if (aUser.id === user.uid) {
+        userClass = "userClass";
+      }
+      else userClass = "";
+      this.leaderboard.push({
+        uid: aUser.id,
+        roundscoreTotal: 0
+      });
+      console.log("Local leaderboard:", this.leaderboard);
       return (
-        <div className='tipEditPanel' key={index}>
-          {user.name}
+        <div key={index} className={'tipsTeamItem '+ userClass}>
+          {aUser.name}
         </div>
       )
     });
@@ -124,6 +142,7 @@ export class Tips extends React.Component {
     }
 
     // return <p>listUsers</p>
+    // var leaderboard = [];
     return users.map( (user, index) => {
       // console.log("User:", user.name);
       // return (
@@ -135,7 +154,39 @@ export class Tips extends React.Component {
       //   tip_team_id: atipId
       // }
       var aTip = getTip(this.state.tips, game.id, user.id);
+
+
       // console.log("Getting tip using userid:", user.id + " gameid:", game.id + "tip:", aTip);
+      // console.log("User:", user.id + ", game id:", game.id + ", result:", game.result_team_id + ", tip:", aTip.tip_team_id);
+      if ((game.result_team_id !== undefined) && (game.result_team_id === aTip.tip_team_id)) {
+
+        // console.log("Correct tip for user:", user.id + " total for round", round);
+
+
+        // console.log("userid index:",this.leaderboard.indexOf(user.id, index));
+        // var aUserElement = this.leaderboard.find( (element) => {
+        //   console.log("element.uid:", element.uid + " user.id", user.id);
+        //   return element.uid === user.id;
+        // });
+
+        var foundIndex = this.leaderboard.findIndex( (element) => {
+          // console.log("element.uid:", element.uid + " user.id", user.id);
+          return element.uid === user.id;
+        });
+        // console.log("foundIndex:", foundIndex);
+        this.leaderboard[foundIndex].roundscoreTotal += 1;
+        //   id: user.id,
+        //   roundscores: roundscores + 1
+        // });
+        // var currentObject = this.leaderboard[aUserElement];
+        // aUserElement.roundscoreTotal =+ 1;
+        // console.log("Local leaderboard current object:", aUserElement);
+        // console.log(" id:", aUserElement.uid + " roundscore:", aUserElement.roundscoreTotal);
+        console.log("Local leaderboard:", this.leaderboard);
+
+      }
+      // console.log("leaderboard:", leaderboard[index].roundscores);
+
       return (
         <TipsUserTipPanel key={index} user={user} game={game} tip={aTip}/>
       )
@@ -144,10 +195,10 @@ export class Tips extends React.Component {
   }
 
   getGamePanels () {
-    var { round } = this.props;
+    var { round, games, admin } = this.props;
 
     console.log("getGamePanels... round:", round);
-    var filteredGames = filterGames(this.state.games, round);
+    var filteredGames = filterGames(games, round);
 
     if (filteredGames.length === 0) {
       return (
@@ -165,7 +216,11 @@ export class Tips extends React.Component {
       // )
       return (
       <div key={game.id} className='tipsPanel'>
-        <TipsGamePanel game={game} />{this.getUserTipPanels(game)}
+        <TipsGamePanel game={game} admin={admin}/>
+        <div className='tipsEditPanel'>
+        {this.getUserTipPanels(game)}
+        </div>
+
       </div>
     )
 
@@ -181,9 +236,21 @@ export class Tips extends React.Component {
 
         <div className='tipsPanel'>
           <div className='tipsGamePanel'>
-            test
+            <div className='tipsTeamItem tipsGameIcon'>
+
+            </div>
+            <div className='tipsDetails'>
+
+            </div>
+            <div className='tipsTeamItem tipsGameIcon'>
+
+            </div>
+
           </div>
-          {this.listUsers()}
+          <div className="tipsEditPanel">
+            {this.listUsers()}
+          </div>
+
         </div>
 
         <div>
@@ -198,7 +265,10 @@ export default connect(
   (state) => {
     return {
       round: state.roundNum,
-      users: state.leaderboard
+      users: state.leaderboard,
+      games: state.games,
+      user: state.user,
+      admin: state.auth.admin
     };
     //return state;
   }

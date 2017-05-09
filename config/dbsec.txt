@@ -27,3 +27,39 @@
     }
   }
 }
+
+{
+  "rules": {
+    "teams": {
+      ".read": true,
+      ".write": false
+    },
+    "users": {
+      "$user_id": {
+        ".read": "$user_id === auth.uid",
+        ".write": "$user_id === auth.uid"
+      }
+    },
+    "leaderboard": {
+      ".read": true,
+      ".write": false
+    },
+    "games": {
+      ".read": true,
+      ".write": "root.child('/admins/' + auth.uid).val() === true"
+    },
+    "tips": {
+      ".read": true,
+      "$user_id": {
+          ".write": "(root.child('/admins/' + auth.uid).val() === true) || $user_id === auth.uid"
+      }
+    
+    },
+    "admins": {
+      ".read": true,
+      ".write": false
+    }
+  }
+}
+
+".write": "(root.child('/admins/' + auth.uid).val() === true) || $user_id === auth.uid && now > root.child('/games/$game_id/timestamp').val()"

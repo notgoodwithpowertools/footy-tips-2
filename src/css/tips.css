@@ -1,7 +1,10 @@
 .tipsPanel {
   display: flex;
-  background-color: #f8f8f8;
-  justify-content: flex-start;
+  -webkit-flex: flex;
+  -moz-flex: flex;
+  /*background-color: #f8f8f8;*/
+  /*background-color: blue;*/
+  /*justify-content: center;*/
   align-items: center;
   border-bottom-color: #dadada;
   border-bottom-style: solid;
@@ -16,19 +19,21 @@
 
 .tipsGamePanel {
   display: flex;
-  width: 250px;
+  -moz-flex: 25%;
+  /*background-color: yellow;*/
+  flex: 25%;
+  min-width: 250px;
   justify-content: center;
   align-items: center;
-  margin-right: 20px;
+  /*margin-right: 20px;*/
 }
 
-.tipsTeamItem {
-  flex: 20%;
-}
-
-.tipEditPanel {
+.tipsEditPanel {
   display: flex;
-  width: 100px;
+  /*flex-direction: column;*/
+  flex: 75%;
+  /*flex-shrink: 1;*/
+  /*width: 100px;*/
   /*height: 30px;*/
   /*padding: 5px;*/
   /*margin-left: 20px;*/
@@ -36,10 +41,36 @@
   border-left-style: solid;
   border-left-width: thin;
   border-bottom-width: thin;
+  justify-content: space-around;
+  align-items: center;
+  /*background-color: green;*/
+
+}
+
+
+/*.tipsTeamItem {
+  flex: 20%;
+}*/
+
+.tipsTeamItem {
+  display: flex;
+  width: 60px;
+  /*height: 30px;*/
+  /*padding: 5px;*/
+  /*margin-left: 20px;*/
+  border-bottom-width: thin;
   justify-content: center;
   align-items: center;
   /*background-color: green;*/
 
+}
+
+.userClass {
+  background-color: #095692;
+  color: white;
+  border-color: red;
+  border-width: medium;
+  border-style: solid;
 }
 
 .correctTip {
@@ -50,7 +81,7 @@
   background-color: #db2525;
 }
 
-.tipEditIcon {
+.tipsEditIcon {
   width: 30px;
   height: 30px;
   padding: 5px;
@@ -75,23 +106,32 @@
   /*height: 15px;*/
   align-items: center;
   justify-content: center;
+  text-align: center;
+  min-width: 100px;
   /*font-weight: bold;*/
 
 }
 
-@media (max-width: 400px) {
+@media (max-width: 550px) {
   .tipsGameIcon {
     width: 30px;
     height: 25px;
   }
+  .tipsEditIcon {
+    width: 25px;
+    height: 25px;
+  }
+  .tipsTeamItem {
+    width: 50px;
+  }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
   .tipsDetails {
     display: none;
   }
   .tipsGamePanel {
-    max-width: 90px;
+    min-width: 90px;
     margin: 5px;
   }
 }

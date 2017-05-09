@@ -107,6 +107,15 @@ export var startEmailLogin = (email = "aqwerty543@gmail.com", password = "wally1
   };
 };
 
+// Not used - manually add user to leaderboard
+// export var addUserToLeaderBoard = (user, firstname) => {
+//   console.log("Adding user to Leaderboard");
+//   return firebaseRef.child(`leaderboard/${user.uid}/info`)
+//     .set({
+//       name: firstname
+//     })
+//     .then(() => user)
+// }
 
 export var registerUser = (email, password, firstname) => {
   return (dispatch, getState) => {
@@ -119,6 +128,7 @@ export var registerUser = (email, password, firstname) => {
     firebase.auth().createUserWithEmailAndPassword(email, password).then((result) => {
       saveUser(result, firstname);
       console.log("Registration worked...", result);
+      // addUserToLeaderBoard(result, firstname);
     }, (error) => {
       console.log("Unable to register", error);
     });

@@ -19,7 +19,7 @@ export var startLoadTeams = () => {
 
     return teamsRef.once('value').then((snapshot) => {
       var teams = snapshot.val() || {};
-      console.log('snapshot.val() teams', teams);
+      // console.log('snapshot.val() teams', teams);
       var parsedTeams = [];
 
       //translate to an array

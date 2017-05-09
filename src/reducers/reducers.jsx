@@ -86,7 +86,7 @@ export var teamsReducer = (state = [], action) => {
   switch (action.type) {
 
     case 'LOAD_TEAMS':
-      console.log("LOAD_TEAMS... action.teams:", action.teams);
+      // console.log("LOAD_TEAMS... action.teams:", action.teams);
       return [
         // ...state,
         ...action.teams
@@ -126,24 +126,24 @@ export var roundNumReducer = (state = 3, action) => {
 
 };
 
-export var addGameReducer = (state = '', action) => {
-
-  switch (action.type) {
-    case 'SET_HOME_TEAM':
-      console.log("SET_HOME_TEAM: Setting home_team...", action.id);
-      return {
-        ...state,
-        home_team: action.id
-      }
-    case 'SET_AWAY_TEAM':
-      console.log("SET_AWAY_TEAM: Setting away_team...", action.id);
-      return {
-        ...state,
-        away_team: action.id
-      }
-
-    default:
-      return state;
-  }
-
-}
+// export var addGameReducer = (state = '', action) => {
+//
+//   switch (action.type) {
+//     case 'SET_HOME_TEAM':
+//       console.log("SET_HOME_TEAM: Setting home_team...", action.id);
+//       return {
+//         ...state,
+//         home_team: action.id
+//       }
+//     case 'SET_AWAY_TEAM':
+//       console.log("SET_AWAY_TEAM: Setting away_team...", action.id);
+//       return {
+//         ...state,
+//         away_team: action.id
+//       }
+//
+//     default:
+//       return state;
+//   }
+//
+// }

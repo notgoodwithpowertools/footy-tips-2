@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import RoundSelector from './RoundSelector.jsx';
-import DatePanel from './DatePanel.jsx';
+// import DatePanel from './DatePanel.jsx';
 import GamesList from './GamesList.jsx';
 import GameAdmin from './GameAdmin.jsx';
 // import GamePanel from './GamePanel.jsx';
@@ -122,7 +122,7 @@ export class GamePage extends React.Component {
         <h2>GamePage</h2>
         <RoundSelector />
         {this.getAdminPanel()}
-        <DatePanel />
+        {/*}<DatePanel /> */}
         {/* this.getGamePanels() */}
         <GamesList round={round_num}/>
       </div>

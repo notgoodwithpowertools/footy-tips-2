@@ -1,8 +1,9 @@
 import { firebaseRef } from '../api/firebase/index.js';
 
 export var setTip = (userId, gameId, tipTeamId) => {
-
+  console.log("/////////////////////");
   console.log("setTip...User ID:", userId + " Game ID:", gameId + " tip team ID:", tipTeamId);
+
   if (tipTeamId === undefined) {
     firebaseRef.child(`tips/${userId}/tips/${gameId}`).remove();
   }

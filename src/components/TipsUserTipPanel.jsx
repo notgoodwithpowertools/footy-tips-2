@@ -15,11 +15,15 @@ export const TipsUserTipPanel = ({game, user, tip}) => {
 
   var tipTeamId = undefined || tip.tip_team_id;
   var icon = tipTeamId !== undefined ? getTeam(tipTeamId).img : edit_result_icon;
+  var iconClass = "tipsGameIcon";
+  if (icon === edit_result_icon) {
+    iconClass = "tipsEditIcon";
+  }
 
   // var resultClass = "" || (tipTeamId === game.result_team_id ? "correctTip" : "incorrectTip");
-  console.log("game.result_team_id:", game.result_team_id);
+  // console.log("game.result_team_id:", game.result_team_id);
   var resultClass = (game.result_team_id === undefined) ? "" : (game.result_team_id === tipTeamId ? "correctTip" : "incorrectTip");
-  console.log("Game id:", game.id + " resultClass:", resultClass);
+  // console.log("Game id:", game.id + " resultClass:", resultClass);
 
   // var icon = edit_result_icon
   // if (selectedTeamId != undefined) {
@@ -61,8 +65,8 @@ export const TipsUserTipPanel = ({game, user, tip}) => {
   }
 
   return (
-    <div className={"tipEditPanel " + resultClass} onClick={() => {handleClick()}}>
-      <img className='tipEditIcon' src={icon} alt={icon}></img>
+    <div className={'tipsTeamItem ' + resultClass} onClick={() => {handleClick()}}>
+      <img className={iconClass} src={icon} alt={icon}></img>
     </div>
   );
 }

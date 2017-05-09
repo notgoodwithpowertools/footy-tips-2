@@ -11,7 +11,10 @@ import { setGameResult, deleteGame } from '../actions/game-actions.js';
 
 export const GamePanel = (props) => {
 
-  var { id, home_team_id, away_team_id, admin, venue, result_team_id } = props;
+  // var { id, home_team_id, away_team_id, admin, venue, result_team_id } = props;
+  var { game, admin } = props;
+  var { id, home_team_id, away_team_id, venue, result_team_id } = game;
+
   console.log("Getting result info for panel for game id:", id + " using result:" + result_team_id);
   var home_team_result_icon = undefined;
   var away_team_result_icon = undefined;
@@ -29,7 +32,7 @@ export const GamePanel = (props) => {
     if (result_team_id === teamId) {
       teamId = -1;
     }
-    setGameResult(id, teamId);
+    setGameResult(game, teamId);
 
   };
 
@@ -103,7 +106,7 @@ export const GamePanel = (props) => {
 
           <Image src={home_team_result_icon} width={35} height={35} mode='fit' cssClass='statusIcon'/>
 
-          <GameDetails venue={"blah"} result={result_team_id}/>
+          <GameDetails venue={venue} result={result_team_id}/>
           <Image src={away_team_result_icon} width={35} height={35} mode='fit' cssClass='statusIcon'/>
         </div>
       )

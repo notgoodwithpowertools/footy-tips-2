@@ -4,7 +4,7 @@ import RoundSelector from './RoundSelector.jsx';
 import TipsGamePanel from './TipsGamePanel.jsx';
 import TipsUserTipPanel from './TipsUserTipPanel.jsx';
 
-import { firebaseRef } from '../api/firebase/index.js';
+// import { firebaseRef } from '../api/firebase/index.js';
 import { filterGames } from '../actions/game-actions.js';
 import { getTip } from '../actions/tip-actions.js';
 
@@ -15,7 +15,7 @@ export class Tips extends React.Component {
   constructor() {
     super();
     this.state = {games: [], tips: {} };
-    this.leaderboard = [];
+    // this.leaderboard = [];
     //this.getGamePanels = this.getGamePanels.bind(this);
     // this.loadGames();
     this.listUsers = this.listUsers.bind(this);
@@ -56,31 +56,23 @@ export class Tips extends React.Component {
       // dispatch(updateGames(parsedGames));
     // });
 
-    var tipsRef = firebaseRef.child(`/tips/`);
-    tipsRef.on('value', snap => {
-
-      var tips = snap.val() || {};
-      console.log("tipSnap.val() tips:", snap.val());
-      var parsedTips = [];
-
-      // Object.keys(tips).forEach( (gameId) => {
-      //   parsedTips.push({
-      //     gameId: gameId,
-      //     // parsedRoundScores,
-      //     ...tips[gameId]
-      //   });
-      // });
-      Object.keys(tips).forEach( (uid) => {
-        parsedTips.push({
-          uid: uid,
-          // parsedRoundScores,
-          ...tips[uid]
-        });
-      });
-      console.log("tips (parsed from Firebase):", parsedTips);
-      this.setState({tips: parsedTips});
-
-    });
+    // var tipsRef = firebaseRef.child(`/tips/`);
+    // tipsRef.on('value', snap => {
+    //
+    //   var tips = snap.val() || {};
+    //   console.log("tipSnap.val() tips:", snap.val());
+    //   var parsedTips = [];
+    //   Object.keys(tips).forEach( (uid) => {
+    //     parsedTips.push({
+    //       uid: uid,
+    //       // parsedRoundScores,
+    //       ...tips[uid]
+    //     });
+    //   });
+    //   console.log("tips (parsed from Firebase):", parsedTips);
+    //   this.setState({tips: parsedTips});
+    //
+    // });
 
   }
 
@@ -119,6 +111,7 @@ export class Tips extends React.Component {
         roundscoreTotal: 0
       });
       console.log("Local leaderboard:", this.leaderboard);
+      // this.setState({leaderboard: leaderboard})
       return (
         <div key={index} className={'tipsTeamItem '+ userClass}>
           {aUser.name}
@@ -129,7 +122,7 @@ export class Tips extends React.Component {
 
   getUserTipPanels (game) {
     // console.log("getUserTipPanels...");
-    var { users } = this.props;
+    var { users, Rtips } = this.props;
 
     //var filterPlayers = FTipsAPI.filterGames(games, round);
 
@@ -153,7 +146,8 @@ export class Tips extends React.Component {
       // var aTip = {
       //   tip_team_id: atipId
       // }
-      var aTip = getTip(this.state.tips, game.id, user.id);
+      // var aTip = getTip(this.state.tips, game.id, user.id);
+      var aTip = getTip(Rtips, game.id, user.id);
 
 
       // console.log("Getting tip using userid:", user.id + " gameid:", game.id + "tip:", aTip);
@@ -169,12 +163,12 @@ export class Tips extends React.Component {
         //   return element.uid === user.id;
         // });
 
-        var foundIndex = this.leaderboard.findIndex( (element) => {
-          // console.log("element.uid:", element.uid + " user.id", user.id);
-          return element.uid === user.id;
-        });
+        // var foundIndex = this.leaderboard.findIndex( (element) => {
+        //   // console.log("element.uid:", element.uid + " user.id", user.id);
+        //   return element.uid === user.id;
+        // });
         // console.log("foundIndex:", foundIndex);
-        this.leaderboard[foundIndex].roundscoreTotal += 1;
+        // this.leaderboard[foundIndex].roundscoreTotal += 1;
         //   id: user.id,
         //   roundscores: roundscores + 1
         // });
@@ -182,7 +176,7 @@ export class Tips extends React.Component {
         // aUserElement.roundscoreTotal =+ 1;
         // console.log("Local leaderboard current object:", aUserElement);
         // console.log(" id:", aUserElement.uid + " roundscore:", aUserElement.roundscoreTotal);
-        console.log("Local leaderboard:", this.leaderboard);
+        // console.log("Local leaderboard:", this.leaderboard);
 
       }
       // console.log("leaderboard:", leaderboard[index].roundscores);
@@ -195,10 +189,11 @@ export class Tips extends React.Component {
   }
 
   getGamePanels () {
-    var { round, games, admin } = this.props;
+    var { round, games, admin, Rtips, users } = this.props;
 
     console.log("getGamePanels... round:", round);
     var filteredGames = filterGames(games, round);
+    console.log("filteredGames:", filteredGames);
 
     if (filteredGames.length === 0) {
       return (
@@ -216,7 +211,7 @@ export class Tips extends React.Component {
       // )
       return (
       <div key={game.id} className='tipsPanel'>
-        <TipsGamePanel game={game} admin={admin}/>
+        <TipsGamePanel game={game} admin={admin} games={filteredGames} tips={Rtips} users={users}/>
         <div className='tipsEditPanel'>
         {this.getUserTipPanels(game)}
         </div>
@@ -268,7 +263,8 @@ export default connect(
       users: state.leaderboard,
       games: state.games,
       user: state.user,
-      admin: state.auth.admin
+      admin: state.auth.admin,
+      Rtips: state.tips
     };
     //return state;
   }

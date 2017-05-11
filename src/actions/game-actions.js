@@ -1,4 +1,5 @@
 import { firebaseRef } from '../api/firebase/index.js';
+// import { getTip } from './tip-actions.js';
 
 export var updateGames = (games) => {
   return {
@@ -76,11 +77,8 @@ export var setGameResult = (game, team_id) => {
 
   // Check and update tips
   // Get round number
-  // console.log("Setting round tip results for round:", game.round_num);
+  // updateTipTotals(game.round_num);
   // Get users
 
   // for each user check game setting - update user for that round which will tleaderboard + or -
-
-
-
 }

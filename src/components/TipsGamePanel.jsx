@@ -5,7 +5,7 @@ import React from 'react';
 import { getTeam } from '../api/team.js';
 import { setGameResult } from '../actions/game-actions.js';
 
-export const TipsGamePanel = ({game, admin}) => {
+export const TipsGamePanel = ({game, admin, games, tips, users}) => {
 
   //var resultClass = (game.result_team_id === undefined) ? "" : (game.home_team_id === tipTeamId ? "correctTip" : "incorrectTip");
 
@@ -16,6 +16,8 @@ export const TipsGamePanel = ({game, admin}) => {
         teamId = -1;
       };
       setGameResult(game, teamId);
+
+      //updateTipTotals(game, games, tips, users);
       // console.log("Div clicked...If admin:", admin + "... setting game id:", game.id + " result to team_id:", teamId);
     }
   };

@@ -12,13 +12,11 @@ import '../css/player.css';
 
 // Convert to React.Component
 //export var Todo = React.createClass({
-// export class Player extends React.Component {
+export class Player extends React.Component {
 
-export const Player = (props) => {
+  render () {
 
-  // render () {
-
-    var {firstname, rank, roundscores, totalTips} = props;
+    var {name, rank, roundscores, totalScore} = this.props;
 
     // console.log("name:", name);
     /*
@@ -104,18 +102,18 @@ export const Player = (props) => {
 
       <div className='playerRow'>
         {/* <div className='details'><div className='numbercircle'>{rank}</div><img src={require(`../images/${imageName}.png`) } alt={require('../images/george.png') }/><p className='player'>{name}</p></div> */}
-        <div className='details'><div className='numbercircle'>{rank}</div><img className='pic' src={ imageName } alt={require('../images/george.png') }/><p className='player'>{firstname}</p></div>
+        <div className='details'><div className='numbercircle'>{rank}</div><img className='pic' src={ imageName } alt={require('../images/george.png') }/><p className='player'>{name}</p></div>
 
         <div className='results'>
           {getResultList()}
 
         </div>
-        <div className='total'><div className='totalBox'>{totalTips}</div> </div>
+        <div className='total'><div className='totalBox'>{totalScore}</div> </div>
       </div>
 
     )
-  };
-// };
+  }
+};
 
 export default Player;
 /*

@@ -3,7 +3,7 @@ import * as redux from 'redux';
 import thunk from 'redux-thunk';
 
 //var {searchTextReducer, showCompletedReducer, todosReducer} = require('../reducers/reducers.jsx');
-import { authReducer, userReducer, msgReducer, leaderboardReducer, teamsReducer, roundNumReducer, gamesReducer /* addGameReducer */ } from '../reducers/reducers.jsx';
+import { authReducer, userReducer, msgReducer, leaderboardReducer, teamsReducer, roundNumReducer, gamesReducer, tipsReducer } from '../reducers/reducers.jsx';
 
 export var configure = (initialState={}) => {
   var reducers = redux.combineReducers({
@@ -13,7 +13,8 @@ export var configure = (initialState={}) => {
     leaderboard: leaderboardReducer,
     teams: teamsReducer,
     roundNum: roundNumReducer,
-    games: gamesReducer
+    games: gamesReducer,
+    tips: tipsReducer
     // ,
     // addGameSettings: addGameReducer
   });

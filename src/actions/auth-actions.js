@@ -146,6 +146,20 @@ export function saveUser (user, firstname) {
     .then(() => user)
 }
 
+// export function saveUser (user, firstname) {
+//   console.log("Save User:", user);
+//   return firebaseRef.child(`users/${user.uid}/info`)
+//     .set({
+//       email: user.email,
+//       uid: user.uid,
+//       firstname: firstname
+//     })
+//     .then(firebaseRef.child(`tips/${user.uid}/`).set({
+//       uid: user.uid,
+//       name: firstname
+//     })).then(() => user)
+// }
+
 export var setUserAdmin = (admin) => {
   return {
     type: 'SET_USER_ADMIN',

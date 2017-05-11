@@ -4,8 +4,7 @@ var {connect} = require('react-redux');
 import Player from './Player.jsx';
 // import { updatePlayers } from '../actions/player-actions.js';
 // import { firebaseRef } from '../api/firebase/index.js';
-// import { rankPlayers } from '../api/rank.js';
-import { getTipTotals } from '../actions/tip-actions.js';
+import { rankPlayers } from '../api/rank.js';
 
 export class LeaderBoard extends React.Component {
 
@@ -44,31 +43,27 @@ export class LeaderBoard extends React.Component {
 
   render () {
 
-    var sortOnTotalTips = ( a, b ) => {
-      a = Number(a.totalTips);
-      b = Number(b.totalTips);
-      // console.log("a:", a);
-      // console.log("b:", b);
-      if (a < b) {
-        return 1;
-      }
-      if (a > b) {
-        return -1;
-      }
-      return 0;
-    }
+    // var sortPlayers = ( a, b ) => {
+    // //  console.log("pre a:", a);
+    // //  console.log("pre b:", b);
+    //   a = Number(a.score);
+    //   b = Number(b.score);
+    //   // console.log("a:", a);
+    //   // console.log("b:", b);
+    //   if (a < b) {
+    //     return 1;
+    //   }
+    //   if (a > b) {
+    //     return -1;
+    //   }
+    //   return 0;
+    // }
 
-    var { players, games, tips } = this.props;
-
-
+    var { leaderboard } = this.props;
     // console.log("leaderboard:", leaderboard);
-    var filteredPlayers = [];
-    if ((players.length > 0) && (tips.length > 0)){
-
-      filteredPlayers = getTipTotals(games, tips, players);
-      console.log("filteredPlayers:", filteredPlayers);
-
-      // filteredPlayers = rankPlayers(leaderboard);
+    var filteredPlayers = leaderboard;
+    if (filteredPlayers.length > 0) {
+      filteredPlayers = rankPlayers(leaderboard);
       // filteredPlayers.sort(sortPlayers)
     };
 
@@ -84,14 +79,10 @@ export class LeaderBoard extends React.Component {
         )
       }
 
-      filteredPlayers.sort(sortOnTotalTips);
-
       return filteredPlayers.map( (player, index) => {
         var rank = index + 1;
-        // <Player key={player.id} {...player} rank={rank}/>
         return (
-          // <p key={player.uid}>{player.firstname} - TotalTips:{player.totalTips}</p>
-          <Player key={player.uid} rank={rank} {...player} />
+          <Player key={player.id} {...player} rank={rank}/>
         )
       });
     }
@@ -109,9 +100,7 @@ export class LeaderBoard extends React.Component {
 export default connect(
   (state) => {
     return {
-      players: state.leaderboard,
-      tips: state.tips,
-      games: state.games
+      leaderboard: state.leaderboard
     };
     //return state;
   }

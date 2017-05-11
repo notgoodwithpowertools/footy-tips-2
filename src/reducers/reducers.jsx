@@ -113,6 +113,21 @@ export var gamesReducer = (state = [], action) => {
   }
 };
 
+export var tipsReducer = (state = [], action) => {
+  switch (action.type) {
+
+    case 'UPDATE_TIPS':
+    console.log("UPDATE_TIPS: Updating tips...");
+      return [
+        // ...state,
+        ...action.tips
+      ];
+
+    default:
+      return state;
+  }
+};
+
 export var roundNumReducer = (state = 3, action) => {
 
   switch (action.type) {

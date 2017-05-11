@@ -4,7 +4,7 @@ var env = require('node-env-file');
 var Time = require('./date-actions.js');
 
 // Fetch the service account key JSON file contents
-var serviceAccount = require('./FootyTips-Dev-3344885189d2.json');
+var serviceAccount = require('./FootyTips-Dev-203df7e03e29.json');
 
 
 // Load any undefined ENV variables form a specified file.

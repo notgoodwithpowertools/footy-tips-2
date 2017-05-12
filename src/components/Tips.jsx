@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import RoundSelector from './RoundSelector.jsx';
 import TipsGamePanel from './TipsGamePanel.jsx';
 import TipsUserTipPanel from './TipsUserTipPanel.jsx';
+import TipsDataPanel from './TipsDataPanel.jsx';
 
 // import { firebaseRef } from '../api/firebase/index.js';
 import { filterGames } from '../actions/game-actions.js';
-import { getTip } from '../actions/tip-actions.js';
+import { getTip, getTipTotals } from '../actions/tip-actions.js';
 
 import '../css/tips.css';
 
@@ -21,6 +22,7 @@ export class Tips extends React.Component {
     this.listUsers = this.listUsers.bind(this);
     this.getGamePanels = this.getGamePanels.bind(this);
     this.getUserTipPanels = this.getUserTipPanels.bind(this);
+    this.getTipCountPanel = this.getTipCountPanel.bind(this);
     // this.handleGamePanelClick = this.handleGamePanelClick.bind(this);
   }
 
@@ -30,6 +32,8 @@ export class Tips extends React.Component {
   // }
 
   componentWillMount () {
+
+
     // console.log("Tips componentWillMount...");
     // var { round } = this.props;
     // var gamesRef = firebaseRef.child(`/games`);
@@ -106,11 +110,11 @@ export class Tips extends React.Component {
         userClass = "userClass";
       }
       else userClass = "";
-      this.leaderboard.push({
-        uid: aUser.id,
-        roundscoreTotal: 0
-      });
-      console.log("Local leaderboard:", this.leaderboard);
+      // this.leaderboard.push({
+      //   uid: aUser.id,
+      //   roundscoreTotal: 0
+      // });
+      // console.log("Local leaderboard:", this.leaderboard);
       // this.setState({leaderboard: leaderboard})
       return (
         <div key={index} className={'tipsTeamItem '+ userClass}>
@@ -188,12 +192,52 @@ export class Tips extends React.Component {
 
   }
 
+  getTipCountPanel () {
+
+    var { round, games, Rtips, users } = this.props;
+
+    var filteredGames = filterGames(games, round);
+    // console.log("filteredGames:", filteredGames);
+
+    var resultsReady = filteredGames.find( (element) => {
+        return element.result_team_id !== undefined;
+    });
+    // console.log("are resultsReady:", resultsReady);
+
+    if ( filteredGames && Rtips && users && resultsReady ) {
+      var roundLeaderboard = getTipTotals(filteredGames, Rtips, users);
+      console.log("roundLeaderboard:", roundLeaderboard);
+
+      if (roundLeaderboard.length === 0) {
+        return (
+          <div>
+            <p className="container__message">No Tips</p>
+          </div>
+        )
+      };
+
+
+      var tipData = roundLeaderboard.map( (item, index) => {
+          return item.totalTips;
+      });
+      console.log("TipData:", tipData);
+
+      return (
+          <TipsDataPanel data={tipData}/>
+      );
+      // });
+    }
+    else return null;
+
+
+  }
+
   getGamePanels () {
     var { round, games, admin, Rtips, users } = this.props;
 
-    console.log("getGamePanels... round:", round);
+    // console.log("getGamePanels... round:", round);
     var filteredGames = filterGames(games, round);
-    console.log("filteredGames:", filteredGames);
+    // console.log("filteredGames:", filteredGames);
 
     if (filteredGames.length === 0) {
       return (
@@ -224,6 +268,7 @@ export class Tips extends React.Component {
 
   render () {
     // {this.listUsers()}
+
     return (
       <div>
         <h2>Tips Admin</h2>
@@ -246,6 +291,9 @@ export class Tips extends React.Component {
             {this.listUsers()}
           </div>
 
+        </div>
+        <div>
+          {this.getTipCountPanel()}
         </div>
 
         <div>

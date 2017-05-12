@@ -75,8 +75,9 @@ export var startAddTips = () => {
   };
 };
 
-export var getTipTotalsForRound = (game, games, tips, users) => {
-  console.log("updateTipTotals... Updating round tip results for round:", game.round_num);
+/*
+export var getRoundTipTotals = (games, tips, users) => {
+  // console.log("getRoundTipTotals... Updating round tip results for round:", round);
   console.log("users:", users);
   console.log("games:", games);
   var leaderboard = users.map( (user, index) => {
@@ -135,6 +136,7 @@ export var getTipTotalsForRound = (game, games, tips, users) => {
   // for each user add up correct tips
   // set Leaderboard values per user per round
 }
+*/
 
 export var getTipTotals = (games, tips, users) => {
   // console.log("users:", users);

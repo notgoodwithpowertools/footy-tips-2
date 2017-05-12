@@ -74,11 +74,11 @@
 }
 
 .correctTip {
-  background-color: green;
+  background-color: #6db85e;
 }
 
 .incorrectTip {
-  background-color: #db2525;
+  background-color: #fc5959;
 }
 
 .tipsEditIcon {

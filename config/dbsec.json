@@ -1,3 +1,47 @@
+
+/// as of 21-05-2017
+
+{
+  "rules": {
+    "teams": {
+      ".read": true,
+      ".write": false
+    },
+    "users": {
+      "$user_id": {
+        ".read": "$user_id === auth.uid",
+        ".write": "$user_id === auth.uid"
+      }
+    },
+    "leaderboard": {
+      ".read": true,
+      ".write": false
+    },
+    "games": {
+      ".read": true,
+      ".write": "root.child('/admins/' + auth.uid).val() === true"
+    },
+    "tips": {
+      ".read": true,
+      "$user_id": {
+        "tips": {
+          "$game_id": {
+          ".write": "(root.child('/admins/' + auth.uid).val() === true) || $user_id === auth.uid && root.child('/games/' + $game_id + '/datestamp/').val() > now"
+
+          }
+        }
+      }
+
+    },
+    "admins": {
+      ".read": true,
+      ".write": false
+    }
+  }
+}
+
+//////
+
 ".write": "root.child('/admins/$user_id').val() === false"
 
 {

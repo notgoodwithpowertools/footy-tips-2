@@ -7,3 +7,6 @@ firebase-admin node-env-file
 
 Environment Variables
 Create .env file in project root with env Variables
+
+This explains static.json 
+https://github.com/mars/create-react-app-buildpack

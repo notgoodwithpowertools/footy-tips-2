@@ -4,8 +4,9 @@ var env = require('node-env-file');
 var Time = require('./date-actions.js');
 
 // Fetch the service account key JSON file contents
-var serviceAccount = require('./FootyTips-Dev-203df7e03e29.json');
-
+// var serviceAccount = require('./FootyTips-Dev-203df7e03e29.json');
+var serviceAccount = require('../../../Downloads/footytips-dev-firebase-adminsdk-ozaty-f0916a38c8.json');
+// config/FootyTips-Prod-0c7373417381.json
 
 // Load any undefined ENV variables form a specified file.
 env('./local.env');

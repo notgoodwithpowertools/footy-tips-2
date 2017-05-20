@@ -38,8 +38,8 @@ export const Player = (props) => {
     //var imageFile = 'images/' + `${sname}.jpg`.toLowerCase();
     // var imageName = 'harry';
     try {
-      var fileName = name.toLowerCase()
-      // console.log("fileName:", fileName);
+      var fileName = firstname.toLowerCase()
+      console.log("fileName:", fileName);
       var imageName = require(`../images/${fileName}.png`)
 
     }

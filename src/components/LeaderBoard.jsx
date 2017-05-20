@@ -2,6 +2,7 @@ import React from 'react';
 var {connect} = require('react-redux');
 
 import Player from './Player.jsx';
+import '../css/leaderboard.css';
 // import { updatePlayers } from '../actions/player-actions.js';
 // import { firebaseRef } from '../api/firebase/index.js';
 // import { rankPlayers } from '../api/rank.js';
@@ -13,9 +14,9 @@ export class LeaderBoard extends React.Component {
   //   super(props);
   // }
 
-  componentDidMount () {
-
-    console.log("LeaderBoard component did mount...");
+  // componentDidMount () {
+  //
+  //   console.log("LeaderBoard component did mount...");
 /*
     var { dispatch } = this.props;
     var leaderboardRef = firebaseRef.child(`/leaderboard`);
@@ -40,7 +41,7 @@ export class LeaderBoard extends React.Component {
       dispatch(updatePlayers(parsedPlayers));
     });
 */
-  } // end -- componentDidMount
+  //} // end -- componentDidMount
 
   render () {
 
@@ -98,7 +99,7 @@ export class LeaderBoard extends React.Component {
 
     return (
       <div>
-        <h2>Footy Tipping 2017 Leader Board</h2>
+        <h2 className='lbh2'>Footy Tipping 2017 Leader Board</h2>
         {renderPlayers()}
       </div>
     )

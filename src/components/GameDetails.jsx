@@ -16,8 +16,10 @@ export const GameDetails = ({venue, result}) => {
 
      <div className="gameVenue">
        {venue}
+
      </div>
      {getResultTxt()}
+
 
    </div>
 

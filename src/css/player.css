@@ -1,6 +1,6 @@
-h2 {
+/*h2 {
   text-align: center;
-}
+}*/
 
 .background {
   background-color: white;
@@ -67,7 +67,8 @@ h2 {
     height: 2em;
     box-sizing: initial;
 
-    background-color: #095692;
+    /*background-color: #095692;*/
+    background-color: #00275E;
     /*border: 0.1em solid yellow;*/
     color: white;
     text-align: center;
@@ -85,7 +86,8 @@ h2 {
     height: 2em;
     /*box-sizing: initial;*/
 
-    background-color: #095692;
+    /*background-color: #095692;*/
+    background-color: #00275E;
     /*border: 0.1em solid yellow;*/
     color: white;
     text-align: center;
@@ -116,10 +118,10 @@ h2 {
   .button1 {
     margin-bottom: 10px;
   }
-  h1 {
+  /*.lpHeading {
     font-size: 5vw;
-    color: green;
-  }
+    color: red;
+  }*/
 }
 
 

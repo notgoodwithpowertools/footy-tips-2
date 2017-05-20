@@ -15,17 +15,14 @@ var LandingPage = (props) => {
   return (
 
     <div className="landing">
-    <div className="title">
-      <div className="first">
-        <h1 className="heading">Landing Page</h1>
+      <div className="lpHeadingPanel">
+        <h1 className='lpHeading'>Footy Tips 2017</h1>
       </div>
-      <div className="second">
-        <Link className="button2 link" to='/login'>Signin</Link>
+      <div className="lpButtonsPanel">
+        <Link className="button2 link" to='/login'>Sign in</Link>
         <Link className="button2 link"to='/register'>Register</Link>
 
       </div>
-    </div>
-
     </div>
 
   )

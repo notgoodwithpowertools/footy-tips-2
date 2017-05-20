@@ -10,6 +10,7 @@ import GameAdmin from './GameAdmin.jsx';
 // import { firebaseRef } from '../api/firebase/index.js';
 // import { filterGames } from '../actions/game-actions.js';
 // import { isAdmin } from '../actions/auth-actions.js';
+import { setRoundNum } from '../actions/roundNum-actions.js';
 
 // import startAddGames from '../actions/game-actions.js';
 
@@ -24,6 +25,15 @@ export class GamePage extends React.Component {
   //   this.loadGames = this.loadGames.bind(this);
   //   this.loadGames();
   // }
+
+  componentWillMount () {
+    var { dispatch, nextRoundNum } = this.props;
+    if (nextRoundNum !== undefined) {
+      console.log("Next round:", nextRoundNum);
+      dispatch(setRoundNum(nextRoundNum));
+    }
+  }
+
 
   // componentDidMount () {
   // loadGames () {
@@ -119,7 +129,7 @@ export class GamePage extends React.Component {
 
     return (
       <div>
-        <h2>GamePage</h2>
+        {/* <h2>GamePage</h2> */}
         <RoundSelector />
         {this.getAdminPanel()}
         {/*}<DatePanel /> */}
@@ -139,6 +149,7 @@ export default connect(
       // addGameSettings: state.addGameSettings,
       // teams: state.teams,
       round_num: state.roundNum,
+      nextRoundNum: state.nextRoundNum,
       user: state.user.uid,
       admin: state.auth.admin
     };

@@ -1,3 +1,4 @@
+// import * as roundActions from '../actions/roundNum-actions.js';
 
 export var authReducer = (state = '', action) => {
 
@@ -58,6 +59,7 @@ export var msgReducer = (state = '', action) => {
 }
 
 export var leaderboardReducer = (state = '', action) => {
+// export var leaderboardReducer = (state = roundActions.getNextRound(), action) => {
 
   switch (action.type) {
     case 'ADD_PLAYERS':
@@ -128,12 +130,25 @@ export var tipsReducer = (state = [], action) => {
   }
 };
 
-export var roundNumReducer = (state = 3, action) => {
+export var roundNumReducer = (state = 1, action) => {
 
   switch (action.type) {
     case 'SET_ROUND_NUM':
       console.log("SET_ROUND_NUM: Setting round_num...", action.roundNum);
       return action.roundNum;
+
+    default:
+      return state;
+  }
+
+};
+
+export var nextRoundNumReducer = (state = 1, action) => {
+
+  switch (action.type) {
+    case 'SET_NEXT_ROUND_NUM':
+      console.log("SET_NEXT_ROUND_NUM: Setting next round_num...", action.nextRoundNum);
+      return action.nextRoundNum;
 
     default:
       return state;

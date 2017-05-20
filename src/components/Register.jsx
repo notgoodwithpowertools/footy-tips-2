@@ -1,6 +1,13 @@
 import React from 'react';
 import * as Redux from 'react-redux';
 import * as authActions from '../actions/auth-actions.js';
+import {
+  //BrowserRouter as Router,
+  //Route,
+  Link
+} from 'react-router-dom';
+
+import '../css/landing.css';
 
 // Convert to React.Component
 //export var Login = React.createClass({
@@ -25,16 +32,16 @@ export class Register extends React.Component {
   //render: function () {}
   render () {
     return (
-      <div>
+      <div className='landing blur'>
 
-        <h3>Register</h3>
-          <div>
-            <input type="email" ref="userid" placeholder="Enter email id..." />
-            <input type="password" ref="password" placeholder="Enter password..." />
-            <input type="text" ref="firstname" placeholder="Enter name..." />
+        <h1 className="lpHeading">Register</h1>
+          <div className="loginPanel">
+            <input className="loginInput" type="email" ref="userid" placeholder="Enter email id..." />
+            <input className="loginInput" type="password" ref="password" placeholder="Enter password..." />
+            <input className="loginInput" type="text" ref="firstname" placeholder="Enter name..." />
+            <button className="button2" onClick={this.register}>Register</button>
+            <Link className="lpLink" to='/login'>Back to Login</Link>
           </div>
-        <button className="button" onClick={this.register}>Register</button>
-
       </div>
     )
   }

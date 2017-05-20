@@ -3,8 +3,8 @@ import React from 'react';
 import Team from './Team.jsx';
 import GameDetails from './GameDetails.jsx';
 import Image from './Image.jsx';
-import tick from '../images/tick.jpg';
-import cross from '../images/cross.jpg';
+import tick from '../images/Tick_Dad.png';
+import cross from '../images/Cross_Dad.png';
 import edit_result_icon from '../images/edit_result.png';
 
 import { setGameResult, deleteGame } from '../actions/game-actions.js';
@@ -64,9 +64,7 @@ export const GamePanel = (props) => {
         <div className='gameDetails'>
 
           <Image src={edit_result_icon} width={35} height={35} mode='fit' onClick={() => {handleTeamClick(home_team_id)}}/>
-
           <GameDetails venue={venue}/>
-
           <Image src={edit_result_icon} width={35} height={35} mode='fit' onClick={() => {handleTeamClick(away_team_id)}}/>
 
         </div>
@@ -95,9 +93,11 @@ export const GamePanel = (props) => {
       if (admin) {
         return (
           <div className='gameDetails'>
+
             <Image src={home_team_result_icon} width={35} height={35} mode='fit' cssClass='statusIcon' onClick={() => {handleTeamClick(home_team_id)}} />
             <GameDetails venue={venue} result={result_team_id}/>
             <Image src={away_team_result_icon} width={35} height={35} mode='fit' cssClass='statusIcon' onClick={() => {handleTeamClick(away_team_id)}}/>
+
           </div>
         )
       };
@@ -105,9 +105,9 @@ export const GamePanel = (props) => {
         <div className='gameDetails'>
 
           <Image src={home_team_result_icon} width={35} height={35} mode='fit' cssClass='statusIcon'/>
-
           <GameDetails venue={venue} result={result_team_id}/>
           <Image src={away_team_result_icon} width={35} height={35} mode='fit' cssClass='statusIcon'/>
+
         </div>
       )
     }

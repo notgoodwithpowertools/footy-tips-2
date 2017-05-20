@@ -5,7 +5,8 @@ import {
   BrowserRouter as Router,
   Route,
   Redirect,
-  Link
+  Link,
+  NavLink
 } from 'react-router-dom';
 
 import './css/App.css';
@@ -14,6 +15,7 @@ import './css/index.css';
 
 
 import Home from './components/Home.jsx';
+// import NextTips from './components/NextTips.jsx';
 import About from './components/About.jsx';
 import LeaderBoard from './components/LeaderBoard.jsx';
 //import Topic from './components/Topic.jsx';
@@ -24,17 +26,31 @@ import Register from './components/Register.jsx';
 import LandingPage from './components/LandingPage.jsx';
 import User from './components/User.jsx';
 import GamePage from './components/GamePage.jsx';
+import Image from './components/Image.jsx';
 // import Spinner from './components/Spinner.jsx';
 
 import * as authActions from './actions/auth-actions.js';
 
+import './css/nav.css';
+import home_img from './images/home.png';
+import logout_img from './images/logout.png';
+import user_img from './images/man-24-128-white.png';
+import list_img from './images/white-list2.png';
+import afl_img from './images/afl-white.png';
+import info_img from './images/information.png';
 
 //const BasicExample = () => (
 export class MyApp extends React.Component {
 
-  componentDidMount () {
-    // const leaderboardRef = firebase.database().ref.child('leaderboard');
-  }
+  // componentDidMount () {
+  //   // const leaderboardRef = firebase.database().ref.child('leaderboard');
+  // }
+  //
+  // componentWillMount () {
+  //
+  //   // const leaderboardRef = firebase.database().ref.child('leaderboard');
+  // }
+
 
   onLogout (e) {
     var {dispatch} = this.props;
@@ -45,6 +61,14 @@ export class MyApp extends React.Component {
 
   render () {
 
+    var activeStyle = {
+        // fontWeight: 'bold',
+        color: 'white',
+        backgroundColor: '#E21E31',
+        borderBottomStyle: 'solid',
+        borderBottomColor: '#E21E31'
+    }
+
     // const user = true;
     var { user }  = this.props;
     console.log("user:", user);
@@ -53,21 +77,21 @@ export class MyApp extends React.Component {
 
       if ( user ) {
         return (
-          <div>
-          <ul>
-            <li><Link to="/home">Home</Link></li>
-            <li><Link to="/leaderboard">Leaderboard</Link></li>
-            <li><Link to="/tips">Tips</Link></li>
-            <li><Link to="/games">Games</Link></li>
-            <li><Link to="/user">User</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/topics">Topics</Link></li>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/register">Register</Link></li>
-            <li><Link to="/start">Start</Link></li>
-            <li><Link to="#" onClick={this.onLogout.bind(this)}>Logout</Link></li>
+
+          <div className='nav'>
+          <ul className='nav_ul'>
+            <li className='nav_li'><NavLink to="/user" activeStyle={activeStyle}><Image src={user_img} height={25} width={25} /><div className='nav_text'>User</div></NavLink></li>
+            {/* }<li className='nav_li'><NavLink to="/home" activeStyle={activeStyle}><Image src={home_img} height={25} width={25} /><div className='nav_text'>Home</div></NavLink></li> */}
+            {/* <li className='nav_li'><NavLink to="/next" activeStyle={activeStyle}><Image src={home_img} height={25} width={25} /><div className='nav_text'>Next</div></NavLink></li> */}
+            <li className='nav_li'><NavLink to="/leaderboard" activeStyle={activeStyle}><Image src={list_img} height={25} width={25} /><div className='nav_text'>Leaderboard</div></NavLink></li>
+            <li className='nav_li'><NavLink to="/tips" activeStyle={activeStyle}><Image src={afl_img} height={25} width={25} /><div className='nav_text'>Tips</div></NavLink></li>
+            <li className='nav_li'><NavLink to="/games" activeStyle={activeStyle}><Image src={home_img} height={25} width={25} /><div className='nav_text'>Games</div></NavLink></li>
+            <li className='nav_li'><NavLink to="/about" activeStyle={activeStyle}><Image src={info_img} height={25} width={25} /><div className='nav_text'>About</div></NavLink></li>
+            {/* <li className='nav_li'><NavLink to="/topics" activeStyle={activeStyle}>Topics</NavLink></li> */}
+            {/* <li className='nav_li'><Link to="/login">Login</Link></li> */}
+            <li className='nav_li'><Link to="#" onClick={this.onLogout.bind(this)}><Image src={logout_img} height={25} width={25} /><div className='nav_text'>Logout</div></Link></li>
           </ul>
-          <hr/>
+          {/* <hr/> */}
           </div>
         )
       }
@@ -89,6 +113,10 @@ export class MyApp extends React.Component {
 
       <Router>
         <div>
+        {/* <div className='landing blur'> */}
+        {/* <div className='content'> */}
+
+
           {menu()}
 
 
@@ -106,20 +134,21 @@ export class MyApp extends React.Component {
             )}/> */}
           <Route path="/login" render={() => (
               user ?
-              <Redirect to="/home" /> :
+              <Redirect to="/user" /> :
               <Login />
           )}/>
           <Route path="/register" render={() => (
               user ?
-              <Redirect to="/home" /> :
+              <Redirect to="/user" /> :
               <Register />
           )}/>
           <Route path="/start" render={() => (
               user ?
-              <Redirect to="/home" /> :
+              <Redirect to="/user" /> :
               <LandingPage />
           )}/>
-          <Route path="/home" render={protect(Home)} />
+          {/*<Route path="/home" render={protect(Home)} /> */}
+          {/* <Route path="/next" component={protect(NextTips)} /> */}
           <Route path="/leaderboard" component={LeaderBoard} />
           <Route path="/games" component={GamePage} />
           <Route path="/tips" component={protect(Tips)} />
@@ -131,6 +160,9 @@ export class MyApp extends React.Component {
           {/*<Route path="/about" render={protect(About)}/> */}
           {/*<Route path="/start" component={LandingPage} /> */}
           {/*<Route render={() => (<Redirect to="/home" />)}/> */}
+
+        {/*</div> */}
+        {/*</div> */}
         </div>
       </Router>
       )

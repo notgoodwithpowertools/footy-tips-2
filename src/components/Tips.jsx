@@ -8,6 +8,7 @@ import TipsDataPanel from './TipsDataPanel.jsx';
 // import { firebaseRef } from '../api/firebase/index.js';
 import { filterGames } from '../actions/game-actions.js';
 import { getTip, getTipTotals } from '../actions/tip-actions.js';
+import { setRoundNum } from '../actions/roundNum-actions.js';
 
 import '../css/tips.css';
 
@@ -15,7 +16,7 @@ export class Tips extends React.Component {
 
   constructor() {
     super();
-    this.state = {games: [], tips: {} };
+    // this.state = {games: [], tips: {} };
     // this.leaderboard = [];
     //this.getGamePanels = this.getGamePanels.bind(this);
     // this.loadGames();
@@ -32,6 +33,12 @@ export class Tips extends React.Component {
   // }
 
   componentWillMount () {
+    var { dispatch, nextRoundNum } = this.props;
+    if (nextRoundNum !== undefined) {
+      console.log("Next round:", nextRoundNum);
+      dispatch(setRoundNum(nextRoundNum));
+    };
+  }
 
 
     // console.log("Tips componentWillMount...");
@@ -78,14 +85,12 @@ export class Tips extends React.Component {
     //
     // });
 
-  }
-
   // handleGamePanelClick (teamId) {
   //   console.log("Game panel clicked...Setting result to:", teamId);
   // }
 
   listUsers () {
-    var { users, user } = this.props;
+    var { users, user, admin } = this.props;
     this.leaderboard=[];
 
     //var filterPlayers = FTipsAPI.filterGames(games, round);
@@ -107,7 +112,11 @@ export class Tips extends React.Component {
       // )
       // console.log("User IDs:", aUser.id + " : " + user.uid);
       if (aUser.id === user.uid) {
-        userClass = "userClass";
+        if (admin) {
+          userClass = 'adminClass'
+
+        }
+        else userClass = "userClass";
       }
       else userClass = "";
       // this.leaderboard.push({
@@ -271,7 +280,7 @@ export class Tips extends React.Component {
 
     return (
       <div>
-        <h2>Tips Admin</h2>
+        {/* <h2>Tips Admin</h2> */}
         <RoundSelector />
 
         <div className='tipsPanel'>
@@ -308,6 +317,7 @@ export default connect(
   (state) => {
     return {
       round: state.roundNum,
+      nextRoundNum: state.nextRoundNum,
       users: state.leaderboard,
       games: state.games,
       user: state.user,

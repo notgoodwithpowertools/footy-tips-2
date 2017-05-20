@@ -13,6 +13,7 @@ import * as teamActions from './actions/team-actions.js';
 import * as playerActions from './actions/player-actions.js';
 import * as gameActions from './actions/game-actions.js';
 import * as tipActions from './actions/tip-actions.js';
+// import * as roundActions from './actions/roundNum-actions.js';
 
 //Use Firebase to control user page redirection depending on login state
 import firebase from './api/firebase/index.js';
@@ -20,6 +21,7 @@ store.dispatch(teamActions.startLoadTeams());
 store.dispatch(playerActions.startAddPlayers());
 store.dispatch(gameActions.startAddGames());
 store.dispatch(tipActions.startAddTips());
+// store.dispatch(roundActions.setRoundNum(roundActions.getNextRound(store.getState().games)));
 
 firebase.auth().onAuthStateChanged( (user) => {
   if (user) {

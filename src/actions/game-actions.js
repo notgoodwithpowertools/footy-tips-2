@@ -1,5 +1,7 @@
 import { firebaseRef } from '../api/firebase/index.js';
 // import { getTip } from './tip-actions.js';
+import { getNextRound, setNextRoundNum } from '../actions/nextRoundNum-actions.js';
+
 
 export var updateGames = (games) => {
   return {
@@ -30,6 +32,8 @@ export var startAddGames = () => {
 
       // console.log("games (parsed from Firebase):", parsedGames);
       dispatch(updateGames(parsedGames));
+      dispatch(setNextRoundNum(getNextRound(parsedGames)));
+      // console.log("Game actions ", getNextRound(parsedGames));
 
     });
   };

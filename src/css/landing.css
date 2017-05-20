@@ -1,37 +1,52 @@
-.landing {
-  font-family: Ubuntu, Arial, serif;
-  /*background-image: url('/images/mcg5.jpg');*/
-  border: 2px dashed red;
-  /*height: 100%;*/
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 2px dashed red;
-  height: 100vh;
-  margin-bottom: 5px;
-  /*padding: 0;*/
-  /*height: auto;*/
-  background-size: cover;
-  background-position: center center;
 
-}
 
-.first {
-  background-color: green;
+/*.lpHeadingPanel {
+
   padding: 20px;
-  /*flex: 1;*/
   display: flex;
   justify-content: center;
   align-items: center;
-  /*text-align: center;*/
+
+}*/
+
+.lpButtonsPanel {
+  /*background: linear-gradient(to bottom, #FFFFFF 0, #FFFFFF 2%, #3f4b0a 100%) repeat scroll 0 0 transparent;*/
+  /*background: linear-gradient(to bottom, #FFFFFF , #FFFFFF 2%, #3f4b0a 100%) repeat scroll 0 0 transparent;*/
+  /*background: rgba(204,204,900, 0.5);*/
+  background: rgba(0,0,50, 0.5);
+  /*background: hsla(204,204,900, 0.5);*/
+  /*background-color: red;*/
+  padding: 20px;
+  /*opacity: 0.5;*/
+  /*flex: 1;*/
+  min-width: 250px;
+  display: flex;
+  justify-content: center;
+  border-radius: 5px;
 }
 
-.second {
-  background-color: yellow;
+.loginPanel {
+  background: rgba(0,0,50, 0.5);
+  /*background: hsla(204,204,900, 0.5);*/
+  /*background-color: red;*/
   padding: 20px;
+  /*opacity: 0.5;*/
   /*flex: 1;*/
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.loginInput {
+  padding: 5px;
+  margin: 5px;
+  font-family: 'Open Sans'
+}
+.lpLink {
+  /*text-decoration: none;*/
+  color: white;
+  padding-top: 5px;
 }
 
 .button1 {
@@ -53,7 +68,8 @@
 }
 
 .button2 {
-  background: linear-gradient(to bottom, #FFFFFF 0, #FAB149 2%, #F89406 100%) repeat scroll 0 0 transparent;
+  /*background: linear-gradient(to bottom, #FFFFFF 0%, #adc4e5 25%, #2e2e2e 100%);*/
+  background: linear-gradient(to bottom, #FFFFFF 0%, #adc4e5 25%, #bf3528 100%);
   /*border: 1px solid #FAB149;*/
   -ms-border-radius: 3px;
   border-radius: 3px;
@@ -62,8 +78,8 @@
   box-shadow: 0 1px 2px #999999;*/
   color: #FFFFFF;
   cursor: pointer;
-  font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
-  /*font-family: 'Open Sans';*/
+  /*font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  font-family: 'Open Sans';
   font-size: 13px;
   font-weight: bold;
   /*-ms-text-shadow: 0 -1px #099FDF;*/
@@ -86,10 +102,11 @@
 }
 
 @media (max-width: 400px) {
-  .second {
+  .lpButtonsPanel {
     flex-direction: column;
-    /*justify-content: space-between;*/
-    /*align-items: center;*/
+    justify-content: center;
+    align-items: center;
+    min-width: 180px;
   }
   .button1 {
     margin-bottom: 10px;
@@ -98,8 +115,9 @@
   .button2 {
     width: 100%;
   }
-  h1 {
-    font-size: 6vw;
-    color: pink;
+  .lpHeading {
+    /*font-size: 6vw;*/
+    font-size: 7vw;
+    color: #bf3528;
   }
 }

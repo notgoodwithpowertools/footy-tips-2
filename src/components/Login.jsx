@@ -1,6 +1,14 @@
 import React from 'react';
 import * as Redux from 'react-redux';
 import * as authActions from '../actions/auth-actions.js';
+import '../css/landing.css';
+
+import {
+  //BrowserRouter as Router,
+  //Route,
+  Link
+} from 'react-router-dom';
+// import Background from '../images/mcg5-blur.jpg';
 
 // Convert to React.Component
 //export var Login = React.createClass({
@@ -46,21 +54,29 @@ export class Login extends React.Component {
     // const buttonStyle = {
     //   fontFamily:'Ubuntu'
     // };
-
+    // var sectionStyle = {
+    //   backgroundImage: 'url(" + { Background } + ")',
+    //   background: "#eee",
+    //   color: 'blue'
+    // };
+    //
     var { msg } = this.props;
 
     return (
-      <div>
+      <div className='landing blur'>
 
-        <h3>Login</h3>
-          <div>
-            <input type="email" ref="userid" placeholder="Enter email id..." />
-            <input type="password" ref="password" placeholder="Enter password..." />
-          </div>
-        <p>Login with Github account...</p>
-        <button className="button" onClick={this.onLoginGitHub}>Login with Github</button>
-        <p>Login with email account...</p>
-        <button className="button" onClick={this.onLoginEmail}>Login with Email</button>
+        <h1 className='lpHeading'>Login</h1>
+
+        <div className="loginPanel">
+          <input className="loginInput" type="email" ref="userid" placeholder="Enter email id..." />
+          <input className="loginInput" type="password" ref="password" placeholder="Enter password..." />
+          <button className="button2" onClick={this.onLoginEmail}>Login</button>
+          <Link className="lpLink" to='/register'>Register</Link>
+        </div>
+        {/*<p>Login with Github account...</p> */}
+        {/*<button className="button" onClick={this.onLoginGitHub}>Login with Github</button> */}
+        {/*<p>Login with email account...</p> */}
+        {/* }<button className="button" onClick={this.onLoginEmail}>Login with Email</button> */}
         {/* }<p>Register email account...</p> */}
         {/* }<button className="button" onClick={this.register}>Register Email</button> */}
         <p className="error">{msg}</p>

@@ -2,6 +2,7 @@ import React from 'react';
 var { connect } = require('react-redux');
 import '../css/roundselect.css';
 import { setRoundNum } from '../actions/roundNum-actions.js';
+// import { getNextRound } from '../actions/nextRoundNum-actions.js';
 // import { updatePlayers } from '../actions/player-actions.js';
 
 export class RoundSelector extends React.Component {
@@ -15,7 +16,19 @@ export class RoundSelector extends React.Component {
 
     this.getRounds = this.getRounds.bind(this);
     this.setRound = this.setRound.bind(this);
+    // this.setRound(this.props.nextRoundNum);
+
   }
+
+  // componentWillMount () {
+  //   var { setNext, dispatch, games } = this.props;
+  //   if ((setNext) && (games.length > 0)) {
+  //     console.log("setNext:", setNext + ' Games:', games);
+  //     var nextRoundNum = getNextRound(games)
+  //     console.log("Next round:", nextRoundNum);
+  //     dispatch(setRoundNum(nextRoundNum));
+  //   }
+  // }
 
   setRound (aRoundNum) {
     // e.preventDefault();
@@ -83,7 +96,9 @@ export class RoundSelector extends React.Component {
 export default connect(
   (state) => {
     return {
-      round_num: state.roundNum
+      round_num: state.roundNum,
+      games: state.games
+      // nextRoundNum: state.nextRoundNum
     };
     //return state;
   }

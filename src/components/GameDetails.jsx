@@ -7,7 +7,7 @@ export const GameDetails = ({venue, result}) => {
    if (result !== undefined) {
     return (<p className='gameResultTxt'>Won by {getTeam(result).nickname}</p>)
    }
-   else return null;
+   else return venue;
  }
 
 
@@ -15,11 +15,9 @@ export const GameDetails = ({venue, result}) => {
    <div className='gameItem gameDetails gameStatus'>
 
      <div className="gameVenue">
-       {venue}
+       {getResultTxt()}
 
      </div>
-     {getResultTxt()}
-
 
    </div>
 

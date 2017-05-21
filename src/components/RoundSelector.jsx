@@ -37,21 +37,37 @@ export class RoundSelector extends React.Component {
     dispatch(setRoundNum(aRoundNum));
   }
 
-  getRounds (split) {
+  // getRounds (split) {
+  //   var {round_num} = this.props;
+  //   var lowSplit = 12;
+  //   var rounds = [];
+  //   //var split = 12;
+  //   if (split === 'low') {
+  //     for (var i = 1; i <= lowSplit; i++) {
+  //         rounds.push(i);
+  //     }
+  //   }
+  //   else {
+  //     for (var p = lowSplit + 1; p <= 23; p++) {
+  //         rounds.push(p);
+  //     }
+  //   }
+
+  getRounds () {
     var {round_num} = this.props;
-    var lowSplit = 12;
+    // var lowSplit = 12;
     var rounds = [];
     //var split = 12;
-    if (split === 'low') {
-      for (var i = 1; i <= lowSplit; i++) {
+    // if (split === 'low') {
+      for (var i = 1; i <= 23; i++) {
           rounds.push(i);
       }
-    }
-    else {
-      for (var p = lowSplit + 1; p <= 23; p++) {
-          rounds.push(p);
-      }
-    }
+    // }
+    // else {
+    //   for (var p = lowSplit + 1; p <= 23; p++) {
+    //       rounds.push(p);
+    //   }
+    // }
 
     // console.log("this.round_num:", round_num);
     return rounds.map((num, index) => {
@@ -75,9 +91,12 @@ export class RoundSelector extends React.Component {
              <div className='roundItem'>
               <p>Round</p>
              </div>
-             <div className='roundItems'>
+             {/*<div className='roundItems'>
                {this.getRounds('low')}
              </div>
+             <div className='roundItems'>
+               {this.getRounds()}
+             </div> */}
              <div className='roundItems'>
                {this.getRounds()}
              </div>

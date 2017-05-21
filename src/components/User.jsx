@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Redux from 'react-redux';
-
+import '../css/userpanel.css';
 // const User = () => {
 export class User extends React.Component {
 
@@ -8,11 +8,14 @@ export class User extends React.Component {
 
   var { user }  = this.props;
 
+
+
   return (
-    <div>
-      <h2>Email - {user.email}</h2>
-      <h2>User Name - {user.firstname}</h2>
-      <h2>UID - {user.uid}</h2>
+    <div className='userpanel'>
+      <h3>Email: </h3>
+      <p>{user.email}</p>
+      <h3>User Name:</h3>
+      <p>{user.firstname}</p>
 
     </div>
   )

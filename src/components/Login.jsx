@@ -68,8 +68,8 @@ export class Login extends React.Component {
         <h1 className='lpHeading'>Login</h1>
 
         <div className="loginPanel">
-          <input className="loginInput" type="email" ref="userid" placeholder="Enter email id..." />
-          <input className="loginInput" type="password" ref="password" placeholder="Enter password..." />
+          <input className="loginInput" name="" type="email" ref="userid" placeholder="Enter email id..." />
+          <input className="loginInput" name="" type="password" ref="password" placeholder="Enter password..." />
           <button className="button2" onClick={this.onLoginEmail}>Login</button>
           <Link className="lpLink" to='/register'>Register</Link>
         </div>

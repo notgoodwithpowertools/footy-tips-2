@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import RoundSelector from './RoundSelector.jsx';
+import RoundSelectMob from './RoundSelectMob.jsx';
 // import DatePanel from './DatePanel.jsx';
 import GamesList from './GamesList.jsx';
 import GameAdmin from './GameAdmin.jsx';
@@ -20,10 +21,11 @@ import '../css/gamepage.css';
 export class GamePage extends React.Component {
   //
   // constructor(props) {
-  //   super(props);
-  //   this.state = {games: []};
-  //   this.loadGames = this.loadGames.bind(this);
-  //   this.loadGames();
+    // super(props);
+    // this.state = {games: []};
+    // this.loadGames = this.loadGames.bind(this);
+    // this.loadGames();
+    // this.handleClick = this.handleClick.bind(this);
   // }
 
   componentWillMount () {
@@ -87,8 +89,8 @@ export class GamePage extends React.Component {
   //
   // }
 
-  handleClick () {
-    console.log('Button clicked...');
+  // handleClick (text) {
+    // console.log('Button clicked...', text);
     // var { round_num } = this.props;
     // var { round_num, addGameSettings } = this.props;
     // addGameSettings.round_num = round_num;
@@ -96,7 +98,7 @@ export class GamePage extends React.Component {
 
 
 
-  }
+  // }
 
   getAdminPanel () {
     console.log("getAdminPanel...");
@@ -131,6 +133,8 @@ export class GamePage extends React.Component {
       <div>
         {/* <h2>GamePage</h2> */}
         <RoundSelector />
+        <RoundSelectMob />
+
         {this.getAdminPanel()}
         {/*}<DatePanel /> */}
         {/* this.getGamePanels() */}

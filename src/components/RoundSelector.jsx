@@ -116,7 +116,7 @@ export default connect(
   (state) => {
     return {
       round_num: state.roundNum,
-      games: state.games
+      // games: state.games
       // nextRoundNum: state.nextRoundNum
     };
     //return state;

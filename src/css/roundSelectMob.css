@@ -1,0 +1,19 @@
+.roundSelectMob {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.roundSelectMobButton {
+  border: 0;
+  background-color: #00275E;
+  color: white;
+  margin: 5px;
+}
+
+@media (min-width: 500px) {
+  .roundSelectMob {
+    display: none;
+  }
+
+}

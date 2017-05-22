@@ -5,6 +5,7 @@ import '../css/player.css';
 import AboutItem from './AboutItem.jsx';
 
 import React_img from '../images/tech/react.png';
+import Gimp_img from '../images/tech/gimp.jpg';
 import ReactDev_img from '../images/tech/ReactDevTools.png';
 import Redux_img from '../images/tech/redux.png';
 import ReactRouter_img from '../images/tech/reactrouter.png';
@@ -35,6 +36,7 @@ const About = () => {
 
   var items = [
     {image: React_img, text: "React"},
+    {image: Gimp_img, text: "The Gimp"},
     {image: ReactDev_img, text: "React Dev Tools"},
     {image: Redux_img, text: "Redux"},
     {image: ReactRouter_img, text: "React Router"},

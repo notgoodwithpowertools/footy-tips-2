@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import RoundSelector from './RoundSelector.jsx';
+import RoundSelectMob from './RoundSelectMob.jsx';
 import TipsGamePanel from './TipsGamePanel.jsx';
 import TipsUserTipPanel from './TipsUserTipPanel.jsx';
 import TipsDataPanel from './TipsDataPanel.jsx';
@@ -282,6 +283,7 @@ export class Tips extends React.Component {
       <div>
         {/* <h2>Tips Admin</h2> */}
         <RoundSelector />
+        <RoundSelectMob />
 
         <div className='tipsPanel'>
           <div className='tipsGamePanel'>

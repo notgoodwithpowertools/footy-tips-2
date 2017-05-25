@@ -1,10 +1,11 @@
 import React from 'react';
+// import { getDay } from '../actions/date-actions.js';
 
+export const DatePanel = ({aDate}) => {
 
-export const DatePanel = () => {
-
+  // aDate = new Date(aDate);
   return (
-    <div className='panel'><p className='panelItem'>Saturday Sep 29</p></div>
+    <div className='panel datepanel'><p className='panelItem'>{aDate}</p></div>
 
 
   );

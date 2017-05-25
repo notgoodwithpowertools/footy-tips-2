@@ -57,7 +57,7 @@ const About = () => {
     {image: Chrome_img, text: "Chrome"},
     {image: Firefox_img, text: "Firefox"},
     {image: Ubuntu_img, text: "Ubuntu"},
-    {image: VMware_img, text: "VMware Fusion"},
+    {image: VMware_img, text: "Fusion"},
     {image: OSX_img, text: "OSX"},
     {image: Mac_img, text: "Mac"}
 

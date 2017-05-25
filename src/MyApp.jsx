@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
   Route,
   Redirect,
-  Link,
+  // Link,
   NavLink
 } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ import './css/index.css';
 
 
 
-import Home from './components/Home.jsx';
+// import Home from './components/Home.jsx';
 // import NextTips from './components/NextTips.jsx';
 import About from './components/About.jsx';
 import LeaderBoard from './components/LeaderBoard.jsx';
@@ -89,7 +89,7 @@ export class MyApp extends React.Component {
             <li className='nav_li'><NavLink to="/about" activeStyle={activeStyle}><Image src={info_img} height={25} width={25} /><div className='nav_text'>About</div></NavLink></li>
             {/* <li className='nav_li'><NavLink to="/topics" activeStyle={activeStyle}>Topics</NavLink></li> */}
             {/* <li className='nav_li'><Link to="/login">Login</Link></li> */}
-            <li className='nav_li'><Link to="#" onClick={this.onLogout.bind(this)}><Image src={logout_img} height={25} width={25} /><div className='nav_text'>Logout</div></Link></li>
+            <li className='nav_li'><NavLink to="#" onClick={this.onLogout.bind(this)}><Image src={logout_img} height={25} width={25} /><div className='nav_text'>Logout</div></NavLink></li>
           </ul>
           {/* <hr/> */}
           </div>
@@ -124,7 +124,7 @@ export class MyApp extends React.Component {
           {/* }<Route exact path="/" component={Home}/> */}
           <Route exact path="/" render={() => (
               user ?
-              <Home /> :
+              <User /> :
               <Redirect to="/start" />
           )}/>
           {/*}<Route path="/home" render={() => (
@@ -150,7 +150,7 @@ export class MyApp extends React.Component {
           {/*<Route path="/home" render={protect(Home)} /> */}
           {/* <Route path="/next" component={protect(NextTips)} /> */}
           <Route path="/leaderboard" component={LeaderBoard} />
-          <Route path="/games" component={GamePage} />
+          <Route path="/games" component={protect(GamePage)} />
           <Route path="/tips" component={protect(Tips)} />
           <Route path="/user" component={protect(User)} />
           {/* <Route path="/topics" render={({Topics}) => (<Redirect to="/start" />)}/> */}

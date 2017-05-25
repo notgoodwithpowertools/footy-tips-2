@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import GamePanel from './GamePanel.jsx';
+import DatePanel from './DatePanel.jsx';
 import GameTipPanel from './GameTipPanel.jsx';
 // import TeamSelect from './TeamSelect.jsx';
 // import { firebaseRef } from '../api/firebase/index.js';
 import { filterGames } from '../actions/game-actions.js';
 import { getTip } from '../actions/tip-actions.js';
+import { getDay } from '../actions/date-actions.js';
 
 export class GamesList extends React.Component {
 
@@ -63,7 +65,6 @@ export class GamesList extends React.Component {
 
     filteredGames = filterGames(games, round);
 
-
     if ((filteredGames.length === 0) || (user === undefined)) {
       return (
           <div>
@@ -72,19 +73,31 @@ export class GamesList extends React.Component {
       )
     };
 
+    var getDatePanel = (aDate, used) => {
+
+      if (used) {
+        return null;
+      }
+      return <DatePanel aDate={aDate}/>;
+    }
+
+    var prevDate = undefined;
+    var used = false;
 
     return filteredGames.map( (game, index) => {
-      // console.log("getGamePanels... user:", user);
+
       var aTip = getTip(tips, game.id, user.uid);
-      // console.log("Game id:", game.id + " uid:", user.uid + " aTip:", aTip);
+      var aDate = getDay(game.datestamp);
+
+      used = (aDate === prevDate) ? true : false;
+      prevDate = aDate;
+
       return (
         <div key={'div-' + game.id}>
+          {getDatePanel(aDate, used)}
           <GamePanel key={game.id} admin={admin} game={game} />
           <GameTipPanel game={game} tip={aTip} user={user.uid} admin={admin}/>
         </div>
-
-
-
       )
     });
 
@@ -95,7 +108,6 @@ export class GamesList extends React.Component {
       <div>
       {this.getGamePanels()}
       </div>
-
     );
   }
 

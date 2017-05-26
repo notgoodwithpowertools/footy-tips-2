@@ -38,6 +38,7 @@ import user_img from './images/man-24-128-white.png';
 import list_img from './images/white-list2.png';
 import afl_img from './images/afl-white.png';
 import info_img from './images/information.png';
+import ladder_img from './images/ladder2.png';
 
 //const BasicExample = () => (
 export class MyApp extends React.Component {
@@ -86,9 +87,11 @@ export class MyApp extends React.Component {
             <li className='nav_li'><NavLink to="/leaderboard" activeStyle={activeStyle}><Image src={list_img} height={25} width={25} /><div className='nav_text'>Leaderboard</div></NavLink></li>
             <li className='nav_li'><NavLink to="/tips" activeStyle={activeStyle}><Image src={afl_img} height={25} width={25} /><div className='nav_text'>Tips</div></NavLink></li>
             <li className='nav_li'><NavLink to="/games" activeStyle={activeStyle}><Image src={home_img} height={25} width={25} /><div className='nav_text'>Games</div></NavLink></li>
-            <li className='nav_li'><NavLink to="/about" activeStyle={activeStyle}><Image src={info_img} height={25} width={25} /><div className='nav_text'>About</div></NavLink></li>
+
             {/* <li className='nav_li'><NavLink to="/topics" activeStyle={activeStyle}>Topics</NavLink></li> */}
             {/* <li className='nav_li'><Link to="/login">Login</Link></li> */}
+            <li className='nav_li'><a href="http://www.foxsports.com.au/afl/ladder" target="_blank"><Image src={ladder_img} height={25} width={25} /><div className='nav_text'>Ladder</div></a></li>
+            <li className='nav_li'><NavLink to="/about" activeStyle={activeStyle}><Image src={info_img} height={25} width={25} /><div className='nav_text'>About</div></NavLink></li>
             <li className='nav_li'><NavLink to="#" onClick={this.onLogout.bind(this)}><Image src={logout_img} height={25} width={25} /><div className='nav_text'>Logout</div></NavLink></li>
           </ul>
           {/* <hr/> */}

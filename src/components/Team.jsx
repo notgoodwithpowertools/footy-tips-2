@@ -11,7 +11,11 @@ export const Team = ({id}) => {
  // console.log("team_id:", id);
 
  return (
-   <div className='gameItem' ><img className='teamIcon' src={getTeam(id).img} alt={team_img}></img>
+   <div className='gameItem' >
+
+     <img className='teamIcon' src={getTeam(id).img} alt={team_img}></img>
+     <div className='teamNameLg'>{getTeam(id).name}</div>
+     <div className='teamNameSm'>{getTeam(id).sname}</div>
 
    </div>
 

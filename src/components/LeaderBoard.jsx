@@ -3,6 +3,8 @@ var {connect} = require('react-redux');
 
 import Player from './Player.jsx';
 import '../css/leaderboard.css';
+
+// import Spinner from './Spinner.jsx';
 // import { updatePlayers } from '../actions/player-actions.js';
 // import { firebaseRef } from '../api/firebase/index.js';
 // import { rankPlayers } from '../api/rank.js';
@@ -61,6 +63,13 @@ export class LeaderBoard extends React.Component {
 
     var { players, games, tips } = this.props;
 
+    // console.log("Players loading...", players);
+    //
+    // if (players === '') {
+    //   return (
+    //     <Spinner />
+    //   )
+    // }
 
     // console.log("leaderboard:", leaderboard);
     var filteredPlayers = [];

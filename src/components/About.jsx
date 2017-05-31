@@ -2,8 +2,10 @@ import React from 'react';
 
 import '../css/numbercircle.css';
 import '../css/player.css';
+import '../css/App.css';
 import AboutItem from './AboutItem.jsx';
 
+import logo from '../svg/logo.svg';
 import React_img from '../images/tech/react.png';
 import Gimp_img from '../images/tech/gimp.jpg';
 import ReactDev_img from '../images/tech/ReactDevTools.png';
@@ -78,7 +80,8 @@ const About = () => {
   var style = {
     display: 'flex',
     flexWrap: 'wrap',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    alignItems: 'center'
   };
 
   var headingStyle = {
@@ -86,8 +89,9 @@ const About = () => {
   }
 
   return (
-    <div className='contentItem'>
+    <div style={style}>
         <h3 style={headingStyle}>Tech used in this project</h3>
+        <img src={logo} className="App-logo" alt="logo" />
         <div style={style}>
         {listItems()}
         </div>

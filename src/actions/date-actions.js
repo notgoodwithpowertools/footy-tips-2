@@ -13,6 +13,6 @@ exports.getTimeStamp = (date, time) => {
 // }
 
 exports.getDay = (aDate) => {
-  var momentString = moment(aDate).format("dddd, MMM Do");
+  var momentString = moment(aDate).format("ddd, MMM Do");
   return momentString;
 }

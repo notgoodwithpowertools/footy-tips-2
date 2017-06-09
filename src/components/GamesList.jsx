@@ -87,8 +87,8 @@ export class GamesList extends React.Component {
     return filteredGames.map( (game, index) => {
 
       var aTip = getTip(tips, game.id, user.uid);
-      var aDate = getDay(game.datestamp);
 
+      var aDate = getDay(game.datestamp);
       used = (aDate === prevDate) ? true : false;
       prevDate = aDate;
 

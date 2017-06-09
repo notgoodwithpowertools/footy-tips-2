@@ -31,7 +31,7 @@ export class GamePage extends React.Component {
   componentWillMount () {
     var { dispatch, nextRoundNum } = this.props;
     if (nextRoundNum !== undefined) {
-      console.log("Next round:", nextRoundNum);
+      // console.log("Next round:", nextRoundNum);
       dispatch(setRoundNum(nextRoundNum));
     }
   }

@@ -1,7 +1,7 @@
 import { firebaseRef } from '../api/firebase/index.js';
 // import { getTip } from './tip-actions.js';
 import { getNextRound, setNextRoundNum } from '../actions/nextRoundNum-actions.js';
-
+import { getMaxRoundNum, setMaxRoundNum } from '../actions/roundNum-actions.js';
 
 export var updateGames = (games) => {
   return {
@@ -33,7 +33,8 @@ export var startAddGames = () => {
       // console.log("games (parsed from Firebase):", parsedGames);
       dispatch(updateGames(parsedGames));
       dispatch(setNextRoundNum(getNextRound(parsedGames)));
-      // console.log("Game actions ", getNextRound(parsedGames));
+      console.log("Max Round Num:", getMaxRoundNum(parsedGames));
+      dispatch(setMaxRoundNum(getMaxRoundNum(parsedGames)));
 
     });
   };
@@ -50,6 +51,12 @@ export var filterGames = (games, round) => {
     return game.round_num === round;
 
   });
+
+  // Sort on datstamp
+  filteredGames.sort( (a, b) => {
+    return a.datestamp > b.datestamp
+  });
+
   // console.log("filteredGames:", filteredGames);
   return filteredGames;
 

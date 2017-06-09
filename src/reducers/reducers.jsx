@@ -156,6 +156,19 @@ export var nextRoundNumReducer = (state = 1, action) => {
 
 };
 
+export var maxRoundNumReducer = (state = 23, action) => {
+
+  switch (action.type) {
+    case 'SET_MAX_ROUND_NUM':
+      console.log("SET_MAX_ROUND_NUM: Setting max round_num...", action.maxRoundNum);
+      return action.maxRoundNum;
+
+    default:
+      return state;
+  }
+
+};
+
 // export var addGameReducer = (state = '', action) => {
 //
 //   switch (action.type) {

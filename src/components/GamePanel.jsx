@@ -15,7 +15,7 @@ export const GamePanel = (props) => {
   var { game, admin } = props;
   var { id, home_team_id, away_team_id, venue, result_team_id } = game;
 
-  console.log("Getting result info for panel for game id:", id + " using result:" + result_team_id);
+  // console.log("Getting result info for panel for game id:", id + " using result:" + result_team_id);
   var home_team_result_icon = undefined;
   var away_team_result_icon = undefined;
 
@@ -28,7 +28,7 @@ export const GamePanel = (props) => {
 
   var handleTeamClick = (teamId) => {
     // var { id } = props;
-    console.log("Team result clicked... ");
+    // console.log("Team result clicked... ");
     if (result_team_id === teamId) {
       teamId = -1;
     }
@@ -56,7 +56,7 @@ export const GamePanel = (props) => {
   };
 
   var getResultInfo = () => {
-    console.log("getResultInfo...result_team_id:", result_team_id);
+    // console.log("getResultInfo...result_team_id:", result_team_id);
 
     if (result_team_id === undefined) {
       if (admin) {
@@ -81,12 +81,12 @@ export const GamePanel = (props) => {
       if (result_team_id === home_team_id) {
         home_team_result_icon = tick;
         away_team_result_icon = cross;
-        console.log("Home team selected...");
+        // console.log("Home team selected...");
       };
       if (result_team_id === away_team_id) {
         home_team_result_icon = cross;
         away_team_result_icon = tick;
-        console.log("Away team selected...");
+        // console.log("Away team selected...");
       };
       // var action;
       // admin ? (action = () => {handleTeamClick(home_team_id)}) : (action = null);

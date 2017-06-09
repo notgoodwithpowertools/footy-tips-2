@@ -1,0 +1,19 @@
+.numSelect {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.numSelectButton {
+  border: 0;
+  background-color: #E21E31;
+  color: white;
+  margin: 5px;
+}
+
+/*@media (min-width: 600px) {
+  .roundSelectMob {
+    display: none;
+  }
+
+}*/

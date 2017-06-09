@@ -54,12 +54,12 @@ export class RoundSelector extends React.Component {
   //   }
 
   getRounds () {
-    var {round_num} = this.props;
+    var { round_num, maxRoundNum } = this.props;
     // var lowSplit = 12;
     var rounds = [];
     //var split = 12;
     // if (split === 'low') {
-      for (var i = 1; i <= 23; i++) {
+      for (var i = 1; i <= maxRoundNum; i++) {
           rounds.push(i);
       }
     // }
@@ -116,6 +116,7 @@ export default connect(
   (state) => {
     return {
       round_num: state.roundNum,
+      maxRoundNum: state.maxRoundNum
       // games: state.games
       // nextRoundNum: state.nextRoundNum
     };

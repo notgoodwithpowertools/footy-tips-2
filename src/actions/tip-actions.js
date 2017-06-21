@@ -139,6 +139,7 @@ export var getRoundTipTotals = (games, tips, users) => {
 */
 
 export var getTipTotals = (games, tips, users) => {
+  console.log("getTipTotals...");
   // console.log("users:", users);
   // console.log("games:", games);
   var leaderboard = users.map( (user, index) => {
@@ -187,7 +188,7 @@ export var getTipTotals = (games, tips, users) => {
       return sum+current;
     }, 0);
 
-    return {uid: user.id, firstname: user.name, roundscores: roundscores, totalTips: totalTips};
+    return {uid: user.id, firstname: user.name, imageURL: user.imageURL, roundscores: roundscores, totalTips: totalTips};
   });
 
   return leaderboard

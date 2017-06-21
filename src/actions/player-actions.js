@@ -32,19 +32,20 @@ export var getPlayerUpdates = () => {
 };
 */
 
-
-export var startAddPlayers = () => {
-  console.log('startAddPlayers...');
+export var startAddPlayers2 = () => {
+  console.log('startAddPlayers2...');
   return (dispatch, getState) => {
 
     //Updated Firebase schema bu uid
     //var uid = getState().auth.uid;
-    var leaderboardRef = firebaseRef.child(`/leaderboard`);
+    var usersRef = firebaseRef.child(`/leaderboard`);
+    console.log("startAddPlayers2 usersRef:", usersRef);
 
     // return leaderboardRef.once('value').then((snapshot) => {
-    leaderboardRef.on('value', snap => {
+    usersRef.on('value', snap => {
+      console.log("Players...");
       var players = snap.val() || {};
-      // console.log('snap.val() players', players);
+      console.log('snap.val() players2', players);
       var parsedPlayers = [];
 
       //translate to an array
@@ -55,12 +56,43 @@ export var startAddPlayers = () => {
         });
 
       });
-      // console.log('parsedPlayers:', parsedPlayers);
+      console.log('parsedPlayers2:', parsedPlayers);
       dispatch(updatePlayers(parsedPlayers));
     });
 
   };
 };
+
+
+// Updated to startAddPlayers2
+// export var startAddPlayers = () => {
+//   console.log('startAddPlayers...');
+//   return (dispatch, getState) => {
+//
+//     //Updated Firebase schema bu uid
+//     //var uid = getState().auth.uid;
+//     var leaderboardRef = firebaseRef.child(`/leaderboard`);
+//
+//     // return leaderboardRef.once('value').then((snapshot) => {
+//     leaderboardRef.on('value', snap => {
+//       var players = snap.val() || {};
+//       // console.log('snap.val() players', players);
+//       var parsedPlayers = [];
+//
+//       //translate to an array
+//       Object.keys(players).forEach( (playerId) => {
+//         parsedPlayers.push({
+//           id: playerId,
+//           ...players[playerId]
+//         });
+//
+//       });
+//       console.log('parsedPlayers:', parsedPlayers);
+//       dispatch(updatePlayers(parsedPlayers));
+//     });
+//
+//   };
+// };
 
 /*
 export var startAddPlayers = () => {

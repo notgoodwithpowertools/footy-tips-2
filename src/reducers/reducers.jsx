@@ -36,8 +36,19 @@ export var userReducer = (state = '', action) => {
       return {
         email: action.user.email,
         firstname: action.user.firstname,
-        uid: action.user.uid
+        uid: action.user.uid,
+        imageURL: action.user.imageURL
       };
+    // case 'UPDATE_IMG':
+    //   return {
+    //     ...state,
+    //     imageURL: action.user.imageURL
+    //   }
+    // case 'SET_USER_IMG':
+    //   return {
+    //     ...state,
+    //     imageURL: action.url
+    //   }
     case 'LOGOUT':
       return {};
     default:

@@ -36,36 +36,60 @@ export var addUser = (user) => {
   };
 };
 
-export var startAddUser = () => {
+// export var updateUser = (user) => {
+//   return {
+//     type: 'UPDATE_USER',
+//     user: user
+//   };
+// };
+
+// export var setUserImg = (url) => {
+//   return {
+//     type: 'SET_USER_IMG',
+//     url: url
+//   };
+// };
+
+export var setUserImgDB = (user, url) => {
+  console.log("setUserImgDB...User ID:", user.uid + " URL:", url);
+  firebaseRef.child(`/users/${user.uid}/info/imageURL`).set(url)
+  .then(() => {
+    firebaseRef.child(`/leaderboard/${user.uid}/imageURL`).set(url)
+  });
+}
+
+
+export var startAddUser2 = () => {
+  console.log('startAddUser2...');
+
   return (dispatch, getState) => {
-    //var todoRef = firebaseRef.child('todos/' + id);
-    // Using ES6 template strings
-
-    //Updated Firebase schema bu uid
-    //var todoRef = firebaseRef.child(`todos/${id}`);
     var uid = getState().auth.uid;
-    console.log("startAddUser:", uid);
     var userRef = firebaseRef.child(`users/${uid}/info`);
-    // console.log("userRef:", userRef.value);
-    userRef.once("value", function(data) {
-      // do some stuff once
-      console.log("User Info Data:", data.val());
-      dispatch(addUser(data.val()));
-    });
+    userRef.on('value', snap => {
+      // console.log("SNAP:", snap.val());
+      dispatch(addUser(snap.val()));
 
-    /*
-    var updates = {
-      uid: uid,
-      email: email,
-      firstname: firstname
-    };
-    return userRef.update(updates).then( () => {
-      dispatch(login(updates));
     });
-    */
-
   };
 };
+
+// Original startAddUser downloading User info once ... superseded for live update of user data changes (startAddUser2)
+// export var startAddUser = () => {
+//
+//   return (dispatch, getState) => {
+//
+//     var uid = getState().auth.uid;
+//     console.log("startAddUser:", uid);
+//     var userRef = firebaseRef.child(`users/${uid}/info`);
+//     // console.log("userRef:", userRef.value);
+//     userRef.once("value", function(data) {
+//       // do some stuff once
+//       console.log("User Info Data:", data.val());
+//       dispatch(addUser(data.val()));
+//     });
+//
+//   };
+// };
 
 
 export var startLogout = () => {
@@ -97,10 +121,9 @@ export var startEmailLogin = (email = "aqwerty543@gmail.com", password = "wally1
     //firebase.auth().signInWithPopup(githubProvider).then((result) => {
       console.log("Auth worked...", result);
 
-      startAddUser();
+      startAddUser2();
     }, (error) => {
-      console.log("Unable to auth", error);
-      console.log("Error:", error.message);
+      console.log("Unable to auth", error.message);
       dispatch(setMsg(error.message));
 
     });
@@ -108,14 +131,15 @@ export var startEmailLogin = (email = "aqwerty543@gmail.com", password = "wally1
 };
 
 // Not used - manually add user to leaderboard
-// export var addUserToLeaderBoard = (user, firstname) => {
-//   console.log("Adding user to Leaderboard");
-//   return firebaseRef.child(`leaderboard/${user.uid}/info`)
-//     .set({
-//       name: firstname
-//     })
-//     .then(() => user)
-// }
+export var addUserToLeaderBoard = (user, firstname, imageURL) => {
+  console.log("Adding user to Leaderboard...", user);
+  return firebaseRef.child(`leaderboard/${user.uid}/`)
+    .set({
+      name: firstname,
+      imageURL: imageURL
+    })
+    .then(() => user)
+}
 
 export var registerUser = (email, password, firstname) => {
   return (dispatch, getState) => {
@@ -137,14 +161,20 @@ export var registerUser = (email, password, firstname) => {
 
 export function saveUser (user, firstname) {
   console.log("Save User:", user);
+  var defURL = 'https://firebasestorage.googleapis.com/v0/b/footytips-dev.appspot.com/o/userimages%2Fdefault.jpg?alt=media&token=c534d444-e8c5-4738-838e-2b9275090878';
   return firebaseRef.child(`users/${user.uid}/info`)
     .set({
       email: user.email,
       uid: user.uid,
-      firstname: firstname
+      firstname: firstname,
+      imageURL: defURL
+    })
+    .then(() => {
+      addUserToLeaderBoard(user, firstname, defURL)
     })
     .then(() => user)
 }
+
 
 // export function saveUser (user, firstname) {
 //   console.log("Save User:", user);

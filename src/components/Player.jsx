@@ -18,9 +18,9 @@ export const Player = (props) => {
 
   // render () {
 
-    var {firstname, rank, roundscores, totalTips} = props;
+    var {firstname, imageURL, rank, roundscores, totalTips} = props;
 
-    // console.log("name:", name);
+    // console.log("name:", firstname + ', URL:', imageURL);
     /*
     var getImage = (aname) => {
       if (eval((aname + 'img').toLowerCase()) === undefined ) {
@@ -37,16 +37,19 @@ export const Player = (props) => {
 
     //var imageFile = 'images/' + `${sname}.jpg`.toLowerCase();
     // var imageName = 'harry';
-    try {
-      var fileName = firstname.toLowerCase()
-      console.log("fileName:", fileName);
-      var imageName = require(`../images/${fileName}.png`)
+    if ( imageURL === undefined ) {
+      try {
+        var fileName = firstname.toLowerCase()
+        console.log("fileName:", fileName);
+        imageURL = require(`../images/${fileName}.png`)
 
+      }
+      catch(err) {
+        console.log("Err:", err);
+        imageURL = require(`../images/ryan.png`)
+      }
     }
-    catch(err) {
-      console.log("Err:", err);
-      imageName = require(`../images/ryan.png`)
-    }
+
 
     // roundscores = [2,5,7,9,11];
     // console.log("roundscores:", roundscores);
@@ -83,28 +86,13 @@ export const Player = (props) => {
         return outputArray;
       }
       return [];
-
     }
-
-    /*
-    var getResultList = () => {
-
-      return roundscores.map( (result, index) => {
-        // console.log("team.id:", player.id);
-        //var i = 1;
-        return (
-          <div key={index} className='numbersquare'>{result}</div>
-        )
-      });
-
-    }
-    */
 
     return (
 
       <div className='playerRow'>
         {/* <div className='details'><div className='numbercircle'>{rank}</div><img src={require(`../images/${imageName}.png`) } alt={require('../images/george.png') }/><p className='player'>{name}</p></div> */}
-        <div className='details'><div className='numbercircle'>{rank}</div><img className='pic' src={ imageName } alt={require('../images/george.png') }/><p className='player'>{firstname}</p></div>
+        <div className='details'><div className='numbercircle'>{rank}</div><img className='pic' src={ imageURL } alt={require('../images/george.png') }/><p className='player'>{firstname}</p></div>
 
         <div className='results'>
           {getResultList()}
@@ -115,25 +103,5 @@ export const Player = (props) => {
 
     )
   };
-// };
 
 export default Player;
-/*
-<div className='numbersquare'>6</div>
-<div className='numbersquare'>2</div>
-<div className='numbersquare'>6</div>
-<div className='numbersquare'>2</div>
-<div className='numbersquare'>6</div>
-<div className='numbersquare'>2</div>
-<div className='numbersquare'>6</div>
-<div className='numbersquare'>2</div>
-<div className='numbersquare'>6</div>
-<div className='numbersquare'>2</div>
-<div className='numbersquare'>6</div>
-<div className='numbersquare'>2</div>
-<div className='numbersquare'>6</div>
-<div className='numbersquare'>2</div>
-<div className='numbersquare'>6</div>
-<div className='numbersquare'>2</div>
-<div className='numbersquare'>6</div>
-*/

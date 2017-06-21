@@ -17,8 +17,10 @@ import * as tipActions from './actions/tip-actions.js';
 
 //Use Firebase to control user page redirection depending on login state
 import firebase from './api/firebase/index.js';
+
 store.dispatch(teamActions.startLoadTeams());
-store.dispatch(playerActions.startAddPlayers());
+// store.dispatch(playerActions.startAddPlayers());
+store.dispatch(playerActions.startAddPlayers2());
 store.dispatch(gameActions.startAddGames());
 store.dispatch(tipActions.startAddTips());
 // store.dispatch(roundActions.setRoundNum(roundActions.getNextRound(store.getState().games)));
@@ -27,7 +29,10 @@ firebase.auth().onAuthStateChanged( (user) => {
   if (user) {
     //store.dispatch(authActions.login(user.uid));
     store.dispatch(authActions.login(user.uid));
-    store.dispatch(authActions.startAddUser(user.uid));
+    // store.dispatch(authActions.startAddUser(user.uid));
+
+    // startAddUser2 is a change to allow for real time tracking of user changes
+    store.dispatch(authActions.startAddUser2(user.uid));
     store.dispatch(authActions.monitorRole(user.uid));
 
   } else {

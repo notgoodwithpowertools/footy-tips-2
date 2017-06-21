@@ -11,6 +11,7 @@ export class DateTime extends React.Component {
     // this.getGamePanels = this.getGamePanels.bind(this);
     // this.loadGames();
     // this.handleChange = this.handleChange.bind(this);
+    this.handleChangeYear = this.handleChangeYear.bind(this);
     this.handleChangeMonth = this.handleChangeMonth.bind(this);
     this.handleChangeDay = this.handleChangeDay.bind(this);
     this.handleChangeHour = this.handleChangeHour.bind(this);
@@ -44,13 +45,20 @@ export class DateTime extends React.Component {
     // this.setState({datestamp: n});
     // this.props.onChange(n);
   // }
+  handleChangeYear (event) {
+
+    var d  = new Date(this.props.datetime);
+    var n = new Date(event.target.value, d.getMonth(), d.getDate(), d.getHours(), d.getMinutes(), 0);
+    this.props.onChange(n);
+
+  }
 
   handleChangeMonth (event) {
     // console.log("Current state: datestamp:", this.props.datetime);
     // console.log("Handling the datetime change... values from input", event.target.name, event.target.value);
     // console.log("New Date vals: Month:", (event.target.value - 1) + " ,Day:", this.state.day + " ,HR:", this.state.hour + " MIN:", this.state.min);
     var d  = new Date(this.props.datetime);
-    var n = new Date(2017, (event.target.value - 1), d.getDate(), d.getHours(), d.getMinutes(), 0);
+    var n = new Date(d.getFullYear(), (event.target.value - 1), d.getDate(), d.getHours(), d.getMinutes(), 0);
     // n = n.getTime();
     // console.log("N:", n.getTime() + " - date:", n.toDateString());
     // this.setState({datestamp: n});
@@ -62,7 +70,7 @@ export class DateTime extends React.Component {
     var d  = new Date(this.props.datetime);
     // console.log("Handling the datetime change... values from input", event.target.name, event.target.value);
     // console.log("New Date vals: Month:", this.state.month + " ,Day:", event.target.value + " ,HR:", this.state.hour + " MIN:", this.state.min);
-    var n = new Date(2017, d.getMonth(), event.target.value, d.getHours(), d.getMinutes(), 0);
+    var n = new Date(d.getFullYear(), d.getMonth(), event.target.value, d.getHours(), d.getMinutes(), 0);
     // n = n.getTime();
     // console.log("N:", n.getTime() + " - date:", n.toDateString());
     // this.setState({datestamp: n});
@@ -73,7 +81,7 @@ export class DateTime extends React.Component {
     var d  = new Date(this.props.datetime);
     // console.log("Handling the datetime change... values from input", event.target.name, event.target.value);
     // console.log("New Date vals: Month:", this.state.month + " ,Day:", event.target.value + " ,HR:", this.state.hour + " MIN:", this.state.min);
-    var n = new Date(2017, d.getMonth(), d.getDate(), event.target.value, d.getMinutes(), 0);
+    var n = new Date(d.getFullYear(), d.getMonth(), d.getDate(), event.target.value, d.getMinutes(), 0);
     // n = n.getTime();
     // console.log("N:", n.getTime() + " - date:", n.toDateString());
     // this.setState({datestamp: n});
@@ -84,7 +92,7 @@ export class DateTime extends React.Component {
     var d  = new Date(this.props.datetime);
     // console.log("Handling the datetime change... values from input", event.target.name, event.target.value);
     // console.log("New Date vals: Month:", this.state.month + " ,Day:", event.target.value + " ,HR:", this.state.hour + " MIN:", this.state.min);
-    var n = new Date(2017, d.getMonth(), d.getDate(), d.getHours(), event.target.value, 0);
+    var n = new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), event.target.value, 0);
     // n = n.getTime();
     // console.log("N:", n.getTime() + " - date:", n.toDateString());
     // this.setState({datestamp: n});
@@ -133,7 +141,9 @@ export class DateTime extends React.Component {
           <input name='day' type='number' max='31' min='1' value={d.getDate()} onChange={ this.handleChangeDay }></input>
           &nbsp;- DD -&nbsp;
           <input name='month' type='number' max='12' min='1' value={d.getMonth()+1} onChange={ this.handleChangeMonth }></input>
-          &nbsp;- MM - 2017 @ &nbsp;
+          &nbsp;- MM -&nbsp;
+          <input name='year' type='number' max='2035' min='2017' value={d.getFullYear()} onChange={ this.handleChangeYear }></input>
+          &nbsp; - YYYY @ &nbsp;
           <input name='hour' type='number' max='23' min='1' value={d.getHours()} onChange={ this.handleChangeHour }></input>
           &nbsp;: HH &nbsp;
           <input name='min' type='number' max='59' min='0' value={d.getMinutes()} onChange={ this.handleChangeMin }></input>

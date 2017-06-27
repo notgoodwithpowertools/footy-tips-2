@@ -161,7 +161,14 @@ export var registerUser = (email, password, firstname) => {
 
 export function saveUser (user, firstname) {
   console.log("Save User:", user);
-  var defURL = 'https://firebasestorage.googleapis.com/v0/b/footytips-dev.appspot.com/o/userimages%2Fdefault.jpg?alt=media&token=c534d444-e8c5-4738-838e-2b9275090878';
+  console.log("process.env.NODE_ENV", process.env.NODE_ENV);
+
+  // var defURL = 'https://firebasestorage.googleapis.com/v0/b/footytips-dev.appspot.com/o/userimages%2Fdefault.jpg?alt=media&token=c534d444-e8c5-4738-838e-2b9275090878';
+  var defURL = 'https://firebasestorage.googleapis.com/v0/b/footytips-prod.appspot.com/o/userimages%2Fdefault.jpg?alt=media&token=1737256f-e52d-46de-a754-d64b7168ed96';
+  if (process.env.NODE_ENV === 'development') {
+    defURL = 'https://firebasestorage.googleapis.com/v0/b/footytips-dev.appspot.com/o/userimages%2Fdefault.jpg?alt=media&token=c534d444-e8c5-4738-838e-2b9275090878';
+  }
+
   return firebaseRef.child(`users/${user.uid}/info`)
     .set({
       email: user.email,

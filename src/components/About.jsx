@@ -90,7 +90,7 @@ const About = () => {
 
   return (
     <div style={style}>
-        <h3 style={headingStyle}>Tech used in this project</h3>
+        <h3 style={headingStyle}>V0.8 Tech used in this project</h3>
         <img src={logo} className="App-logo" alt="logo" />
         <div style={style}>
         {listItems()}

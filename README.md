@@ -8,5 +8,11 @@ firebase-admin node-env-file
 Environment Variables
 Create .env file in project root with env Variables
 
-This explains static.json 
+REACT_APP_API_KEY=AIzaSyAF5pJIIeGCnKGM2GZKDga2DuJg2aeEp-4
+REACT_APP_AUTH_DOMAIN=footytips-dev.firebaseapp.com
+REACT_APP_DATABASE_URL=https://footytips-dev.firebaseio.com
+REACT_APP_STORAGE_BUCKET=footytips-dev.appspot.com
+REACT_APP_MESSAGING_SENDER_ID=189591411481
+
+This explains static.json
 https://github.com/mars/create-react-app-buildpack

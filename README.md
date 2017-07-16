@@ -1,6 +1,9 @@
 
 npm install --save redux react-redux redux-thunk react-router-dom firebase
 
+
+npm install -g firebase-tools
+
 The following are not needed to run on Heroku
 firebase-admin node-env-file
 
@@ -16,3 +19,14 @@ REACT_APP_MESSAGING_SENDER_ID=189591411481
 
 This explains static.json
 https://github.com/mars/create-react-app-buildpack
+
+Use git clone to replicate/download project from github
+
+git clone https://github.com/notgoodwithpowertools/footy-tips-2.git
+
+Install Heroku toolbelt
+wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
+
+
+Add the remote for heroku
+heroku git:remote -a footy-tips-2

@@ -1,6 +1,7 @@
 //var redux = require('redux');
 import * as redux from 'redux';
 import thunk from 'redux-thunk';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 //var {searchTextReducer, showCompletedReducer, todosReducer} = require('../reducers/reducers.jsx');
 import { authReducer, userReducer, msgReducer, leaderboardReducer, teamsReducer, roundNumReducer, gamesReducer, tipsReducer, nextRoundNumReducer, maxRoundNumReducer } from '../reducers/reducers.jsx';
@@ -38,7 +39,9 @@ export var configure = (initialState={}) => {
   //     //,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   //   ));
   // }
-
+  // console.log("Check environment for loading DevTools...");
+  // const devTools = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() : null;
+/*  // Pre state
   var getComposeEnhancers = () => {
     if (window.navigator.userAgent.includes('Chrome')) {
       return redux.compose(
@@ -49,6 +52,20 @@ export var configure = (initialState={}) => {
     return redux.compose(redux.applyMiddleware(thunk) );
   };
   var store = redux.createStore(reducers, initialState, getComposeEnhancers() );
+*/
+
+  var getComposeEnhancers = () => {
+    if (window.navigator.userAgent.includes('Chrome') && (process.env.NODE_ENV === 'development')) {
+      return composeWithDevTools(
+        redux.applyMiddleware(thunk)
+        // ,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+      );
+    }
+    // else return null;
+    return redux.compose(redux.applyMiddleware(thunk) );
+  };
+  var store = redux.createStore(reducers, initialState, getComposeEnhancers() );
+
 
 
   return store;

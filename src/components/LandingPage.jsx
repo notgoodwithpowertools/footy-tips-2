@@ -20,7 +20,7 @@ var LandingPage = (props) => {
       </div>
       <div className="lpButtonsPanel">
         <Link className="button2 link" to='/login'>Sign in</Link>
-        <Link className="button2 link"to='/register'>Register</Link>
+        {/*<Link className="button2 link"to='/register'>Register</Link> */}
 
       </div>
     </div>

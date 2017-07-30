@@ -5,6 +5,7 @@ import {
   BrowserRouter as Router,
   Route,
   Redirect,
+  // Switch,
   // Link,
   NavLink
 } from 'react-router-dom';
@@ -22,7 +23,7 @@ import LeaderBoard from './components/LeaderBoard.jsx';
 import Tips from './components/Tips.jsx';
 import Topics from './components/Topics.jsx';
 import Login from './components/Login.jsx';
-import Register from './components/Register.jsx';
+// import Register from './components/Register.jsx';
 import LandingPage from './components/LandingPage.jsx';
 import User from './components/User.jsx';
 import GamePage from './components/GamePage.jsx';
@@ -52,6 +53,11 @@ export class MyApp extends React.Component {
   //   // const leaderboardRef = firebase.database().ref.child('leaderboard');
   // }
 
+  constructor() {
+    super();
+    this.protect = this.protect.bind(this);
+  }
+
 
   onLogout (e) {
     var {dispatch} = this.props;
@@ -59,6 +65,16 @@ export class MyApp extends React.Component {
     dispatch(authActions.startLogout());
   }
 
+  // function protect (aComponent) {
+  protect (aComponent) {
+    var {user} = this.props;
+    if (user === undefined) {
+      return LandingPage;
+    }
+    else {
+      return aComponent;
+    }
+  }
 
   render () {
 
@@ -100,28 +116,29 @@ export class MyApp extends React.Component {
       }
     }
 
-    // function protect (aComponent) {
-    const protect = (aComponent) => {
-
-      if (!user) {
-        return LandingPage;
-      }
-      else {
-        return aComponent;
-      }
-    };
+    // // function protect (aComponent) {
+    // const protect = (aComponent) => {
+    //
+    //   if (!user) {
+    //     return LandingPage;
+    //   }
+    //   else {
+    //     return aComponent;
+    //   }
+    // };
 
     return (
 
 
       <Router>
         <div>
+
         {/* <div className='landing blur'> */}
         {/* <div className='content'> */}
 
 
           {menu()}
-
+          {/* <Switch> */}
 
 
           {/* }<Route exact path="/" component={Home}/> */}
@@ -140,32 +157,37 @@ export class MyApp extends React.Component {
               <Redirect to="/user" /> :
               <Login />
           )}/>
-          <Route path="/register" render={() => (
+        {/* Removed Registrations*/}
+        {/*<Route path="/register" render={() => (
               user ?
               <Redirect to="/user" /> :
               <Register />
-          )}/>
+          )}/> */}
           <Route path="/start" render={() => (
               user ?
               <Redirect to="/user" /> :
               <LandingPage />
           )}/>
+
           {/*<Route path="/home" render={protect(Home)} /> */}
           {/* <Route path="/next" component={protect(NextTips)} /> */}
           <Route path="/leaderboard" component={LeaderBoard} />
-          <Route path="/games" component={protect(GamePage)} />
-          <Route path="/tips" component={protect(Tips)} />
-          <Route path="/user" component={protect(User)} />
+          <Route path="/games" component={this.protect(GamePage)} />
+          <Route path="/tips" component={this.protect(Tips)} />
+          <Route path="/user" component={this.protect(User)} />
           {/* <Route path="/topics" render={({Topics}) => (<Redirect to="/start" />)}/> */}
-          <Route path="/topics" render={protect(Topics)} />
+          <Route path="/topics" render={this.protect(Topics)} />
           {/* <Route path="/login" component={Login} /> */}
           <Route path="/about" component={About} />
+          {/* <Route component={About} /> */}
           {/*<Route path="/about" render={protect(About)}/> */}
           {/*<Route path="/start" component={LandingPage} /> */}
           {/*<Route render={() => (<Redirect to="/home" />)}/> */}
 
         {/*</div> */}
         {/*</div> */}
+        {/*</Switch> */}
+
         </div>
       </Router>
       )

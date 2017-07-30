@@ -29,7 +29,10 @@ export class User extends React.Component {
     // console.log("Files:", event.target.files[0]);
     var aFile = event.target.files[0];
     console.log("aFile:", aFile);
-    var userImagesRef = firebaseStorageRef.child('userimages/' + user.firstname + '.jpg');
+    var fileExt = aFile.name.split('.').pop()
+    console.log("aFile type:", fileExt);
+    // var userImagesRef = firebaseStorageRef.child('userimages/' + user.firstname + '.jpg');
+    var userImagesRef = firebaseStorageRef.child('userimages/' + user.firstname + '.' + fileExt);
     // var storageRef = firebase.storage().ref('img/'+file.name);
     // Promise.resolve(aFile).then((aFile) => {
     //   console.log("Hello:", aFile);

@@ -1,3 +1,5 @@
+import { getMaxRoundNum, /* setMaxRoundNum */ } from '../actions/roundNum-actions.js';
+
 export var setNextRoundNum = (num) => {
   return {
     type: 'SET_NEXT_ROUND_NUM',
@@ -11,10 +13,15 @@ export var getNextRound = (games) => {
     return game.datestamp > Date.now();
   });
   if (element) {
-    // console.log("calculated next round:", element.round_num);
+    console.log("calculated next round:", element.round_num);
     return element.round_num;
   }
-  else return undefined;
+  else {
+    var maxRoundNum = getMaxRoundNum(games);
+    console.log("calculated next round is last round:", maxRoundNum );
+    return maxRoundNum;
+    // return undefined;
+  }
 
 
 }

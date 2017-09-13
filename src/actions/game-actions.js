@@ -32,9 +32,10 @@ export var startAddGames = () => {
 
       // console.log("games (parsed from Firebase):", parsedGames);
       dispatch(updateGames(parsedGames));
+      dispatch(setMaxRoundNum(getMaxRoundNum(parsedGames)));
       dispatch(setNextRoundNum(getNextRound(parsedGames)));
       console.log("Max Round Num:", getMaxRoundNum(parsedGames));
-      dispatch(setMaxRoundNum(getMaxRoundNum(parsedGames)));
+
 
     });
   };

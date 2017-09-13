@@ -18,9 +18,10 @@ export var getNextRound = (games) => {
   }
   else {
     var maxRoundNum = getMaxRoundNum(games);
-    console.log("calculated next round is last round:", maxRoundNum );
+    // console.log("calculated next round is last round:", maxRoundNum );
     return maxRoundNum;
     // return undefined;
+
   }
 
 

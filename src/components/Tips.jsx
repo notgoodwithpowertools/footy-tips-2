@@ -216,7 +216,7 @@ export class Tips extends React.Component {
 
     if ( filteredGames && Rtips && users && resultsReady ) {
       var roundLeaderboard = getTipTotals(filteredGames, Rtips, users);
-      console.log("roundLeaderboard:", roundLeaderboard);
+      // console.log("roundLeaderboard:", roundLeaderboard);
 
       if (roundLeaderboard.length === 0) {
         return (
@@ -230,7 +230,7 @@ export class Tips extends React.Component {
       var tipData = roundLeaderboard.map( (item, index) => {
           return item.totalTips;
       });
-      console.log("TipData:", tipData);
+      // console.log("TipData:", tipData);
 
       return (
           <TipsDataPanel data={tipData}/>

@@ -13,8 +13,10 @@ export var updateGames = (games) => {
 export var startAddGames = () => {
   console.log('startAddGames...');
   return (dispatch, getState) => {
-
-    var gamesRef = firebaseRef.child(`/games`);
+    // var gamesPath =
+    // var gamesRef = firebaseRef.child(`/games`);
+    // Using games by season
+    var gamesRef = firebaseRef.child(`season-2018-games`);
     gamesRef.on('value', snap => {
 
       // return snap.val();
@@ -34,7 +36,7 @@ export var startAddGames = () => {
       dispatch(updateGames(parsedGames));
       dispatch(setMaxRoundNum(getMaxRoundNum(parsedGames)));
       dispatch(setNextRoundNum(getNextRound(parsedGames)));
-      console.log("Max Round Num:", getMaxRoundNum(parsedGames));
+      // console.log("Max Round Num:", getMaxRoundNum(parsedGames));
 
 
     });
@@ -66,14 +68,14 @@ export var filterGames = (games, round) => {
 export var addGame = (game) => {
 
   console.log("addGame... Adding game record to Firebase:", game);
-  firebaseRef.child(`games`).push(game);
+  firebaseRef.child(`season-2018-games`).push(game);
 
 }
 
 export var deleteGame = (game_id) => {
 
   console.log("deleteGame... Deleting game record to Firebase:", game_id);
-  firebaseRef.child(`games/${game_id}`).remove();
+  firebaseRef.child(`season-2018-games/${game_id}`).remove();
 
 }
 
@@ -81,10 +83,10 @@ export var setGameResult = (game, team_id) => {
 
   console.log("setGameResult... Setting game id:" + game.id + " result record to Firebase:", team_id);
   if (team_id < 0) {
-    firebaseRef.child(`games/${game.id}/result_team_id`).remove();
+    firebaseRef.child(`season-2018-games/${game.id}/result_team_id`).remove();
   }
   else {
-    firebaseRef.child(`games/${game.id}/result_team_id`).set(team_id);
+    firebaseRef.child(`season-2018-games/${game.id}/result_team_id`).set(team_id);
   }
 
   // Check and update tips

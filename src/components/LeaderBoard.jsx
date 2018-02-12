@@ -106,9 +106,11 @@ export class LeaderBoard extends React.Component {
       });
     }
 
+    var { season }  = this.props;
+
     return (
       <div>
-        <h2 className='lbh2'>Footy Tipping 2017 Leader Board</h2>
+        <h2 className='lbh2'>Footy Tipping {season} Leader Board</h2>
         {renderPlayers()}
       </div>
     )
@@ -121,7 +123,8 @@ export default connect(
     return {
       players: state.leaderboard,
       tips: state.tips,
-      games: state.games
+      games: state.games,
+      season: state.season
     };
     //return state;
   }

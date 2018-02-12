@@ -155,6 +155,7 @@ export var registerUser = (email, password, firstname) => {
       // addUserToLeaderBoard(result, firstname);
     }, (error) => {
       console.log("Unable to register", error);
+      dispatch(setMsg(error.message));
     });
   };
 };

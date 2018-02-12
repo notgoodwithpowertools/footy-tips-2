@@ -6,7 +6,7 @@ import '../css/landing.css';
 import {
   //BrowserRouter as Router,
   //Route,
-  // Link
+  Link
 } from 'react-router-dom';
 // import Background from '../images/mcg5-blur.jpg';
 
@@ -71,7 +71,7 @@ export class Login extends React.Component {
           <input className="loginInput" name="" type="email" ref="userid" placeholder="Enter email id..." />
           <input className="loginInput" name="" type="password" ref="password" placeholder="Enter password..." />
           <button className="button2" onClick={this.onLoginEmail}>Login</button>
-          {/* <Link className="lpLink" to='/register'>Register</Link> */}
+          <Link className="lpLink" to='/register'>Register</Link>
         </div>
         {/*<p>Login with Github account...</p> */}
         {/*<button className="button" onClick={this.onLoginGitHub}>Login with Github</button> */}

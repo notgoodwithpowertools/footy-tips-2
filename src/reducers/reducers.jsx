@@ -180,6 +180,18 @@ export var maxRoundNumReducer = (state = 23, action) => {
 
 };
 
+export var seasonReducer = (state = 2018, action) => {
+
+  switch (action.type) {
+    case 'SET_SEASON':
+      console.log("SET_SEASON: Setting season...", action.season);
+      return action.season;
+    default:
+      return state;
+  }
+  
+};
+
 // export var addGameReducer = (state = '', action) => {
 //
 //   switch (action.type) {

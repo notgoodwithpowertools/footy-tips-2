@@ -23,7 +23,7 @@ import LeaderBoard from './components/LeaderBoard.jsx';
 import Tips from './components/Tips.jsx';
 import Topics from './components/Topics.jsx';
 import Login from './components/Login.jsx';
-// import Register from './components/Register.jsx';
+import Register from './components/Register.jsx';
 import LandingPage from './components/LandingPage.jsx';
 import User from './components/User.jsx';
 import GamePage from './components/GamePage.jsx';
@@ -157,12 +157,12 @@ export class MyApp extends React.Component {
               <Redirect to="/user" /> :
               <Login />
           )}/>
-        {/* Removed Registrations*/}
-        {/*<Route path="/register" render={() => (
+          {/* Removed Registrations*/}
+          <Route path="/register" render={() => (
               user ?
               <Redirect to="/user" /> :
               <Register />
-          )}/> */}
+          )}/>
           <Route path="/start" render={() => (
               user ?
               <Redirect to="/user" /> :

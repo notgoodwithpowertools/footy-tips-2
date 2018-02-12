@@ -4,13 +4,14 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 //var {searchTextReducer, showCompletedReducer, todosReducer} = require('../reducers/reducers.jsx');
-import { authReducer, userReducer, msgReducer, leaderboardReducer, teamsReducer, roundNumReducer, gamesReducer, tipsReducer, nextRoundNumReducer, maxRoundNumReducer } from '../reducers/reducers.jsx';
+import { authReducer, userReducer, msgReducer, seasonReducer, leaderboardReducer, teamsReducer, roundNumReducer, gamesReducer, tipsReducer, nextRoundNumReducer, maxRoundNumReducer } from '../reducers/reducers.jsx';
 
 export var configure = (initialState={}) => {
   var reducers = redux.combineReducers({
     auth: authReducer,
     user: userReducer,
     msg: msgReducer,
+    season: seasonReducer,
     leaderboard: leaderboardReducer,
     teams: teamsReducer,
     roundNum: roundNumReducer,

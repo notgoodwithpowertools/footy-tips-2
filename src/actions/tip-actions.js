@@ -4,10 +4,12 @@ export var setTip = (userId, gameId, tipTeamId) => {
   console.log("setTip...User ID:", userId + " Game ID:", gameId + " tip team ID:", tipTeamId);
 
   if (tipTeamId === undefined) {
-    firebaseRef.child(`tips/${userId}/tips/${gameId}`).remove();
+    //firebaseRef.child(`tips/${userId}/tips/${gameId}`).remove();
+    firebaseRef.child(`season-2018-tips/${userId}/tips/${gameId}`).remove();
   }
   else {
-    firebaseRef.child(`tips/${userId}/tips/${gameId}`).set(tipTeamId);
+    // firebaseRef.child(`tips/${userId}/tips/${gameId}`).set(tipTeamId);
+    firebaseRef.child(`season-2018-tips/${userId}/tips/${gameId}`).set(tipTeamId);
   }
 
 }
@@ -52,7 +54,8 @@ export var startAddTips = () => {
   console.log('startAddTips...');
   return (dispatch, getState) => {
 
-    var tipsRef = firebaseRef.child(`/tips`);
+    // var tipsRef = firebaseRef.child(`/tips`);
+    var tipsRef = firebaseRef.child(`season-2018-tips`);
     tipsRef.on('value', snap => {
 
       // return snap.val();
@@ -148,6 +151,7 @@ export var getTipTotals = (games, tips, users) => {
     var round = 0;
     // console.log("User detail:", user.name + " , ID:", user.id);
     for (var aGame of games) {
+      // console.log("aGame.datestamp:", aGame.datestamp);
       if (aGame.datestamp > Date.now()) {
         // console.log("All previous games verified");
         break;
@@ -187,10 +191,12 @@ export var getTipTotals = (games, tips, users) => {
     var totalTips = roundscores.reduce( (sum, current) => {
       return sum+current;
     }, 0);
+    // console.log("totalTips:", totalTips);
 
     return {uid: user.id, firstname: user.name, imageURL: user.imageURL, roundscores: roundscores, totalTips: totalTips};
   });
 
+  // console.log("Leaderboard from TipData:", leaderboard);
   return leaderboard
 
 }

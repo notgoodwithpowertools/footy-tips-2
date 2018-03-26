@@ -16,7 +16,7 @@ var LandingPage = (props) => {
 
     <div className="landing">
       <div className="lpHeadingPanel">
-        <h1 className='lpHeading'>Footy Tips 2017</h1>
+        <h1 className='lpHeading'>Footy Tips 2018</h1>
       </div>
       <div className="lpButtonsPanel">
         <Link className="button2 link" to='/login'>Sign in</Link>

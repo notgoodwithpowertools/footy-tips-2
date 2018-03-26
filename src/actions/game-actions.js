@@ -21,7 +21,7 @@ export var startAddGames = () => {
 
       // return snap.val();
       var games = snap.val() || {};
-      console.log("snap.val() games", snap.val());
+      // console.log("snap.val() games", snap.val());
       var parsedGames = [];
 
       Object.keys(games).forEach( (gameId) => {
@@ -32,7 +32,7 @@ export var startAddGames = () => {
         });
       });
 
-      console.log("games (parsed from Firebase):", parsedGames);
+      // console.log("games (parsed from Firebase):", parsedGames);
       dispatch(updateGames(parsedGames));
       dispatch(setMaxRoundNum(getMaxRoundNum(parsedGames)));
       dispatch(setNextRoundNum(getNextRound(parsedGames)));

@@ -167,7 +167,10 @@ export var getTipTotals = (games, tips, users) => {
       // Get & check tips
       var aTip = getTip(tips, aGame.id, user.id);
       // console.log("Compare - ID:", aGame.id + " result:", aGame.result_team_id + " ,Tip:", aTip.tip_team_id);
-      if ((aGame.result_team_id !== undefined) && (aGame.result_team_id === aTip.tip_team_id)) {
+      // if ((aGame.result_team_id !== undefined) && (aGame.result_team_id === aTip.tip_team_id)) {
+
+      // Count draws (code = 99) as correct tips
+      if ((aGame.result_team_id !== undefined) && ((aGame.result_team_id === aTip.tip_team_id) || (aGame.result_team_id === 99)) ){
         roundscoreTotal += 1;
         // console.log("Good tip! Increment round score total is:", roundscoreTotal);
       }

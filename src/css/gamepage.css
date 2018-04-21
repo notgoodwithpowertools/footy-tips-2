@@ -91,6 +91,11 @@
   /*flex-wrap: wrap;*/
 }
 
+.drawn {
+  background: #f4ee42;
+  color: black;
+}
+
 .gameResultTxt {
   padding: 0;
   margin: 0;

@@ -22,7 +22,8 @@ export const TipsUserTipPanel = ({game, user, tip}) => {
 
   // var resultClass = "" || (tipTeamId === game.result_team_id ? "correctTip" : "incorrectTip");
   // console.log("game.result_team_id:", game.result_team_id);
-  var resultClass = (game.result_team_id === undefined) ? "" : (game.result_team_id === tipTeamId ? "correctTip" : "incorrectTip");
+  // var resultClass = (game.result_team_id === undefined) ? "" : (game.result_team_id === tipTeamId ? "correctTip" : "incorrectTip");
+  var resultClass = (game.result_team_id === undefined) ? "" : (game.result_team_id === 99 ? "drawTip" : (game.result_team_id === tipTeamId ? "correctTip" : "incorrectTip"));
   // console.log("Game id:", game.id + " resultClass:", resultClass);
 
   // var icon = edit_result_icon

@@ -5,6 +5,7 @@ import GameDetails from './GameDetails.jsx';
 import Image from './Image.jsx';
 import tick from '../images/Tick_Dad.png';
 import cross from '../images/Cross_Dad.png';
+// import neutral from '../images/neutral.png';
 import edit_result_icon from '../images/edit_result.png';
 
 import { setGameResult, deleteGame } from '../actions/game-actions.js';

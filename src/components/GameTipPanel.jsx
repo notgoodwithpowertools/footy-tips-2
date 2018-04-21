@@ -5,6 +5,7 @@ import { setTip } from '../actions/tip-actions.js';
 import edit_result_icon from '../images/edit_result.png';
 import tick from '../images/tick.jpg';
 import cross from '../images/cross.jpg';
+import neutral from '../images/neutral.png';
 // import change from '../images/change.jpg';
 // import blank from '../images/car2.jpg';
 
@@ -22,7 +23,7 @@ export const GameTipPanel = (props) => {
 
   var handleTeamClick = (tipTeamId) => {
 
-    console.log("Click!!!!!");
+    // console.log("Click!!!!!");
 
     if (admin) {
       setTip(user, game.id, tipTeamId);
@@ -47,6 +48,18 @@ export const GameTipPanel = (props) => {
 
   if (game.result_team_id !== undefined) {
 
+    if (game.result_team_id === 99) {
+      if (tip.tip_team_id === game.home_team_id) {
+        homeTipIcon = neutral;
+        awayTipIcon = admin ? edit_result_icon : null;
+      }
+      if (tip.tip_team_id === game.away_team_id) {
+        homeTipIcon = admin ? edit_result_icon : null;
+        awayTipIcon = neutral;
+      }
+
+    }
+    else {
     if (game.result_team_id === tip.tip_team_id) {
       tipResultTxt = "Correct Tip";
       if (tip.tip_team_id === game.home_team_id) {
@@ -70,6 +83,7 @@ export const GameTipPanel = (props) => {
         awayTipIcon = cross;
       }
     }
+  }
   }
   else { // Game result is not in
     if (tip.tip_team_id === game.home_team_id) {

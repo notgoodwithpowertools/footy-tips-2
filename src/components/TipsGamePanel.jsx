@@ -11,10 +11,17 @@ export const TipsGamePanel = ({game, admin, games, tips, users}) => {
 
   var handleClick = (teamId) => {
 
+    console.log("handleClick - teamId:", teamId);
+
     if (admin) {
       if (game.result_team_id === teamId) {
-        teamId = -1;
+        // Toggle to Draw ID
+        teamId = 99;
       };
+        // Toggle to undefined
+      if (game.result_team_id === 99) {
+        teamId = null;
+      }
       setGameResult(game, teamId);
 
       //updateTipTotals(game, games, tips, users);
@@ -23,6 +30,7 @@ export const TipsGamePanel = ({game, admin, games, tips, users}) => {
   };
   // }
   var homeTeamClass, awayTeamClass = "";
+  let drawTeamId = 99;
   switch (game.result_team_id) {
     case game.home_team_id: {
       homeTeamClass =  "correctTip";
@@ -33,6 +41,12 @@ export const TipsGamePanel = ({game, admin, games, tips, users}) => {
     case game.away_team_id: {
       homeTeamClass =  "incorrectTip";
       awayTeamClass = "correctTip";
+      break;
+    }
+
+    case drawTeamId: {
+      homeTeamClass =  "drawTip";
+      awayTeamClass = "drawTip";
       break;
     }
 

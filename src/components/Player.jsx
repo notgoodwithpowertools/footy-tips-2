@@ -1,5 +1,5 @@
-var React = require('react');
-
+// var React = require('react');
+import React from 'react';
 import '../css/numbercircle.css';
 import '../css/player.css';
 //import andrewimg from '../images/george.png';

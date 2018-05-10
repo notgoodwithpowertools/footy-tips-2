@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import GamePanel from './GamePanel.jsx';
-import DatePanel from './DatePanel.jsx';
-import GameTipPanel from './GameTipPanel.jsx';
+import { GamePanel } from './GamePanel.jsx';
+import { DatePanel } from './DatePanel.jsx';
+import { GameTipPanel } from './GameTipPanel.jsx';
 // import TeamSelect from './TeamSelect.jsx';
 // import { firebaseRef } from '../api/firebase/index.js';
 import { filterGames } from '../actions/game-actions.js';

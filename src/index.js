@@ -3,10 +3,7 @@ import ReactDOM from 'react-dom';
 import MyApp from './MyApp';
 import './css/index.css';
 
-
 import { Provider } from 'react-redux';
-
-var store = require('./store/configureStore.jsx').configure();
 
 import * as authActions from './actions/auth-actions.js';
 import * as teamActions from './actions/team-actions.js';
@@ -14,9 +11,12 @@ import * as playerActions from './actions/player-actions.js';
 import * as gameActions from './actions/game-actions.js';
 import * as tipActions from './actions/tip-actions.js';
 // import * as roundActions from './actions/roundNum-actions.js';
-
 //Use Firebase to control user page redirection depending on login state
 import firebase from './api/firebase/index.js';
+
+
+var store = require('./store/configureStore.jsx').configure();
+
 
 store.dispatch(teamActions.startLoadTeams());
 // store.dispatch(playerActions.startAddPlayers());

@@ -1,5 +1,6 @@
 import React from 'react';
-var { connect } = require('react-redux');
+// var { connect } = require('react-redux');
+import { connect } from 'react-redux';
 import '../css/roundselect.css';
 import { setRoundNum } from '../actions/roundNum-actions.js';
 // import { getNextRound } from '../actions/nextRoundNum-actions.js';

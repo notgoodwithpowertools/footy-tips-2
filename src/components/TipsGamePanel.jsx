@@ -71,4 +71,5 @@ export const TipsGamePanel = ({game, admin, games, tips, users}) => {
   );
 }
 
-module.exports = TipsGamePanel;
+// module.exports = TipsGamePanel;
+export default TipsGamePanel;

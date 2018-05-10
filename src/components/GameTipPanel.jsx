@@ -119,4 +119,5 @@ export const GameTipPanel = (props) => {
   );
 }
 
-module.exports = GameTipPanel;
+// module.exports = GameTipPanel;
+export default GameTipPanel;

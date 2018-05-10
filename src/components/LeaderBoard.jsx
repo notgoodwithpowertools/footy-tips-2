@@ -1,6 +1,5 @@
 import React from 'react';
-var {connect} = require('react-redux');
-
+import {connect} from 'react-redux';
 import Player from './Player.jsx';
 import '../css/leaderboard.css';
 

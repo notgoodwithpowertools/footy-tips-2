@@ -46,4 +46,5 @@ export const TipsDataPanel = ({data}) => {
 
 }
 
-module.exports = TipsDataPanel;
+// module.exports = TipsDataPanel;
+export default TipsDataPanel;

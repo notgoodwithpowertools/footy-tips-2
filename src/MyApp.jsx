@@ -106,7 +106,9 @@ export class MyApp extends React.Component {
 
             {/* <li className='nav_li'><NavLink to="/topics" activeStyle={activeStyle}>Topics</NavLink></li> */}
             {/* <li className='nav_li'><Link to="/login">Login</Link></li> */}
-            <li className='nav_li'><a href="http://www.foxsports.com.au/afl/ladder" target="_blank"><Image src={ladder_img} height={25} width={25} /><div className='nav_text'>Ladder</div></a></li>
+            <li className='nav_li'><a href="http://www.foxsports.com.au/afl/ladder"
+               // eslint-disable-next-line
+              target="_blank"><Image src={ladder_img} height={25} width={25} /><div className='nav_text'>Ladder</div></a></li>
             <li className='nav_li'><NavLink to="/about" activeStyle={activeStyle}><Image src={info_img} height={25} width={25} /><div className='nav_text'>About</div></NavLink></li>
             <li className='nav_li'><NavLink to="#" onClick={this.onLogout.bind(this)}><Image src={logout_img} height={25} width={25} /><div className='nav_text'>Logout</div></NavLink></li>
           </ul>

@@ -1,27 +1,38 @@
 {
-  "name": "cra-boiler-1",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "firebase": "^3.7.2",
-    "firebase-admin": "^4.2.1",
-    "node-env-file": "^0.1.8",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-redux": "^5.0.3",
-    "react-router-dom": "^4.0.0",
-    "redux": "^3.6.0",
-    "redux-thunk": "^2.2.0"
-  },
-  "devDependencies": {
-    "moment": "^2.18.1",
-    "react-scripts": "0.9.5",
-    "redux-devtools-extension": "^2.13.2"
-  },
+  "name": "footy-tips-2",
+  "version": "1.0.0",
+  "description": "Footy Tipping App Powered by React & Firebase",
+  "main": "index.js",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/notgoodwithpowertools/footy-tips-2.git"
+  },
+  "author": "AA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/notgoodwithpowertools/footy-tips-2/issues"
+  },
+  "homepage": "https://github.com/notgoodwithpowertools/footy-tips-2#readme",
+  "dependencies": {
+    "firebase": "^4.12.1",
+    "moment": "^2.22.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "firebase-admin": "^5.12.0",
+    "node-env-file": "^0.1.8",
+    "react-scripts": "^1.1.4",
+    "redux-devtools-extension": "^2.13.2"
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react';
-var { connect } = require('react-redux');
+// var { connect } = require('react-redux');
+import { connect } from 'react-redux';
 import '../css/numSelect.css';
 
 // const NumSelect = ({onClick}) => {

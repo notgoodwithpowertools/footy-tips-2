@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import RoundSelector from './RoundSelector.jsx';
 import RoundSelectMob from './RoundSelectMob.jsx';
-import TipsGamePanel from './TipsGamePanel.jsx';
+import { TipsGamePanel } from './TipsGamePanel.jsx';
 import TipsUserTipPanel from './TipsUserTipPanel.jsx';
-import TipsDataPanel from './TipsDataPanel.jsx';
+import { TipsDataPanel } from './TipsDataPanel.jsx';
 
 // import { firebaseRef } from '../api/firebase/index.js';
 import { filterGames } from '../actions/game-actions.js';

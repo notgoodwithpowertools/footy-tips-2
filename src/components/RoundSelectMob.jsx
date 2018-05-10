@@ -1,6 +1,6 @@
 import React from 'react';
 
-var { connect } = require('react-redux');
+import { connect } from 'react-redux';
 import '../css/roundSelectMob.css';
 import { setRoundNum } from '../actions/roundNum-actions.js';
 

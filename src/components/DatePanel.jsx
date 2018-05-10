@@ -11,4 +11,5 @@ export const DatePanel = ({aDate}) => {
   );
 }
 
-module.exports = DatePanel;
+// module.exports = DatePanel;
+export default DatePanel;
